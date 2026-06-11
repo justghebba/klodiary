@@ -287,6 +287,122 @@ p, li { text-wrap: pretty; }
 /* ===================== HIGHLIGHT ===================== */
 .klo-card.hidden-search { opacity: 0.2; pointer-events: none; }
 .highlight { background: oklch(from var(--color-primary) l c h / 0.25); border-radius: 2px; }
+
+/* ===================== CASES ===================== */
+.section-header-block { margin-bottom: var(--space-8); }
+.section-main-title { font-size: var(--text-xl); margin-bottom: var(--space-3); }
+.section-sub-wide { font-size: var(--text-sm); color: var(--color-text-muted); max-width: 65ch; }
+
+.case-card {
+  background: var(--color-surface);
+  border: 1px solid oklch(from var(--color-text) l c h / 0.08);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  margin-bottom: var(--space-8);
+  scroll-margin-top: 5rem;
+}
+.case-card-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  cursor: pointer;
+  transition: background var(--transition);
+  user-select: none;
+}
+.case-card-header:hover { background: var(--color-surface-2); }
+.case-number {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-style: italic;
+  line-height: 1;
+  color: var(--color-text-faint);
+  min-width: 2.5ch;
+}
+.case-header-meta {}
+.case-eyebrow { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: var(--space-1); }
+.case-title { font-size: var(--text-lg); line-height: 1.2; margin-bottom: var(--space-2); }
+.case-dilemma { font-size: var(--text-sm); color: var(--color-text-muted); font-style: italic; }
+.case-chevron {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--color-surface-offset);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--color-text-muted);
+  transition: transform var(--transition), background var(--transition);
+  flex-shrink: 0;
+}
+.case-card.open .case-chevron { transform: rotate(180deg); background: var(--color-primary-light); color: var(--color-primary); }
+
+.case-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 480ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.case-card.open .case-body { max-height: 2400px; }
+.case-body-inner {
+  padding: 0 var(--space-6) var(--space-6);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  border-top: 1px solid oklch(from var(--color-text) l c h / 0.07);
+  padding-top: var(--space-6);
+}
+@media (max-width: 700px) {
+  .case-body-inner { grid-template-columns: 1fr; }
+  .case-card-header { grid-template-columns: auto 1fr auto; }
+}
+
+.case-col-title {
+  font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--color-text-faint);
+  margin-bottom: var(--space-3);
+}
+.klo-tag-list { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.klo-tag {
+  display: inline-block;
+  padding: 3px var(--space-3);
+  border-radius: 9999px;
+  font-size: var(--text-xs); font-weight: 500;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: opacity var(--transition), transform var(--transition);
+  text-decoration: none;
+}
+.klo-tag:hover { opacity: 0.75; transform: translateY(-1px); }
+
+.case-moves { list-style: none; }
+.case-moves li {
+  font-size: var(--text-sm); color: var(--color-text);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid oklch(from var(--color-text) l c h / 0.06);
+  display: flex; align-items: flex-start; gap: var(--space-2);
+  line-height: 1.55;
+}
+.case-moves li:last-child { border-bottom: none; }
+.move-bullet { flex-shrink: 0; margin-top: 4px; width: 6px; height: 6px; border-radius: 50%; }
+
+.case-lesson {
+  grid-column: 1 / -1;
+  background: var(--color-surface-offset);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  display: flex; gap: var(--space-4); align-items: flex-start;
+}
+.lesson-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 2px; }
+.lesson-text { font-size: var(--text-sm); color: var(--color-text); line-height: 1.7; }
+.lesson-text strong { color: var(--color-text); }
+
+.no-presentation-badge {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font-size: var(--text-xs); padding: 3px var(--space-3);
+  background: var(--color-surface-offset);
+  border-radius: 9999px;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  margin-left: var(--space-3);
+}
+
 </style>
 </head>
 <body>
@@ -315,7 +431,7 @@ p, li { text-wrap: pretty; }
       <a href="#cluster-4">GTM</a>
       <a href="#cluster-5">STP</a>
       <a href="#cluster-6">Execution</a>
-      <a href="#concept-map-section">Map</a>
+      <a href="#cases-section">Cases</a><a href="#concept-map-section">Map</a>
     </div>
     <button class="theme-btn" data-theme-toggle aria-label="Toggle dark mode">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -344,7 +460,179 @@ p, li { text-wrap: pretty; }
   <!-- CLUSTERS RENDERED BY JS -->
   <div id="clusters-container"></div>
 
+
   <div class="section-divider"></div>
+
+  <!-- CASES SECTION -->
+  <section id="cases-section">
+    <div class="section-header-block">
+      <p class="hero-eyebrow" style="text-align:left;margin-bottom:var(--space-2)">Applied Learning</p>
+      <h2 class="section-main-title">Case Studies</h2>
+      <p class="section-sub-wide">Six real-world situations where frameworks from the KLO clusters were put to work. Each case activates a subset of the 65 concepts — click any tag to jump to its definition.</p>
+    </div>
+    <div id="cases-container"></div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- CROSS-CASE SVG MAP -->
+  <section id="crosscase-map-section">
+    <div class="section-header-block">
+      <p class="hero-eyebrow" style="text-align:left;margin-bottom:var(--space-2)">Synthesis</p>
+      <h2 class="section-main-title">Cross-Case KLO Matrix</h2>
+      <p class="section-sub-wide">The six clusters appear repeatedly across cases — but in different configurations. This map reveals which clusters anchor each case and which KLOs travel across all of them.</p>
+    </div>
+    <div class="map-container">
+      <div class="map-svg-wrap">
+        <svg id="crosscase-svg" viewBox="0 0 820 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cross-case KLO matrix showing which clusters each case activates">
+          <!-- CLUSTER LEGEND NODES (left column) -->
+          <!-- C1 Market Intelligence -->
+          <g onclick="scrollToCluster('cluster-1')" style="cursor:pointer">
+            <rect x="20" y="30" width="160" height="36" rx="8" fill="var(--color-c1-bg)" stroke="var(--color-c1)" stroke-width="1.2"/>
+            <text x="100" y="53" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="var(--color-c1)">① Market Intelligence</text>
+          </g>
+          <!-- C2 Customer & Value -->
+          <g onclick="scrollToCluster('cluster-2')" style="cursor:pointer">
+            <rect x="20" y="108" width="160" height="36" rx="8" fill="var(--color-c2-bg)" stroke="var(--color-c2)" stroke-width="1.2"/>
+            <text x="100" y="131" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="var(--color-c2)">② Customer &amp; Value</text>
+          </g>
+          <!-- C3 Strategic Env -->
+          <g onclick="scrollToCluster('cluster-3')" style="cursor:pointer">
+            <rect x="20" y="186" width="160" height="36" rx="8" fill="var(--color-c3-bg)" stroke="var(--color-c3)" stroke-width="1.2"/>
+            <text x="100" y="209" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="var(--color-c3)">③ Strategic Env.</text>
+          </g>
+          <!-- C4 GTM -->
+          <g onclick="scrollToCluster('cluster-4')" style="cursor:pointer">
+            <rect x="20" y="264" width="160" height="36" rx="8" fill="var(--color-c4-bg)" stroke="var(--color-c4)" stroke-width="1.2"/>
+            <text x="100" y="287" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="var(--color-c4)">④ GTM &amp; Objectives</text>
+          </g>
+          <!-- C5 STP -->
+          <g onclick="scrollToCluster('cluster-5')" style="cursor:pointer">
+            <rect x="20" y="342" width="160" height="36" rx="8" fill="var(--color-c5-bg)" stroke="var(--color-c5)" stroke-width="1.2"/>
+            <text x="100" y="365" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="var(--color-c5)">⑤ STP Framework</text>
+          </g>
+          <!-- C6 Strategy & Exec -->
+          <g onclick="scrollToCluster('cluster-6')" style="cursor:pointer">
+            <rect x="20" y="420" width="160" height="36" rx="8" fill="var(--color-c6-bg)" stroke="var(--color-c6)" stroke-width="1.2"/>
+            <text x="100" y="443" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="var(--color-c6)">⑥ Strategy &amp; Exec.</text>
+          </g>
+
+          <!-- CASE COLUMN HEADERS -->
+          <!-- Aqualisa x=230 -->
+          <g onclick="scrollToCase('case-aqualisa')" style="cursor:pointer">
+            <rect x="198" y="490" width="86" height="42" rx="6" fill="var(--color-surface-offset)" stroke="var(--color-border)" stroke-width="1"/>
+            <text x="241" y="508" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text)">Aqualisa</text>
+            <text x="241" y="523" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8.5" fill="var(--color-text-muted)">Quartz</text>
+          </g>
+          <!-- Ontela x=330 -->
+          <g onclick="scrollToCase('case-ontela')" style="cursor:pointer">
+            <rect x="298" y="490" width="86" height="42" rx="6" fill="var(--color-surface-offset)" stroke="var(--color-border)" stroke-width="1"/>
+            <text x="341" y="508" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text)">Ontela</text>
+            <text x="341" y="523" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8.5" fill="var(--color-text-muted)">PicDeck</text>
+          </g>
+          <!-- The YES x=430 -->
+          <g onclick="scrollToCase('case-theyes')" style="cursor:pointer">
+            <rect x="398" y="490" width="86" height="42" rx="6" fill="var(--color-surface-offset)" stroke="var(--color-border)" stroke-width="1"/>
+            <text x="441" y="508" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text)">The YES</text>
+            <text x="441" y="523" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8.5" fill="var(--color-text-muted)">e-commerce AI</text>
+          </g>
+          <!-- MannKind x=530 -->
+          <g onclick="scrollToCase('case-mannkind')" style="cursor:pointer">
+            <rect x="498" y="490" width="86" height="42" rx="6" fill="var(--color-surface-offset)" stroke="var(--color-border)" stroke-width="1"/>
+            <text x="541" y="508" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text)">MannKind</text>
+            <text x="541" y="523" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8.5" fill="var(--color-text-muted)">Afrezza</text>
+          </g>
+          <!-- Telenor x=630 -->
+          <g onclick="scrollToCase('case-telenor')" style="cursor:pointer">
+            <rect x="598" y="490" width="86" height="42" rx="6" fill="var(--color-surface-offset)" stroke="var(--color-border)" stroke-width="1"/>
+            <text x="641" y="508" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text)">Telenor</text>
+            <text x="641" y="523" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8.5" fill="var(--color-text-muted)">Serbia</text>
+          </g>
+          <!-- Hot Wheels x=730 -->
+          <g onclick="scrollToCase('case-hotwheels')" style="cursor:pointer">
+            <rect x="698" y="490" width="86" height="42" rx="6" fill="var(--color-surface-offset)" stroke="var(--color-border)" stroke-width="1"/>
+            <text x="741" y="508" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9.5" font-weight="600" fill="var(--color-text)">Hot Wheels</text>
+            <text x="741" y="523" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8.5" fill="var(--color-text-muted)">Mixed Play</text>
+          </g>
+
+          <!-- GRID LINES (faint) -->
+          <!-- Horizontal per cluster row -->
+          <line x1="185" y1="48" x2="800" y2="48" stroke="var(--color-divider)" stroke-width="0.7"/>
+          <line x1="185" y1="126" x2="800" y2="126" stroke="var(--color-divider)" stroke-width="0.7"/>
+          <line x1="185" y1="204" x2="800" y2="204" stroke="var(--color-divider)" stroke-width="0.7"/>
+          <line x1="185" y1="282" x2="800" y2="282" stroke="var(--color-divider)" stroke-width="0.7"/>
+          <line x1="185" y1="360" x2="800" y2="360" stroke="var(--color-divider)" stroke-width="0.7"/>
+          <line x1="185" y1="438" x2="800" y2="438" stroke="var(--color-divider)" stroke-width="0.7"/>
+          <!-- Vertical per case col -->
+          <line x1="285" y1="15" x2="285" y2="485" stroke="var(--color-divider)" stroke-width="0.7"/>
+          <line x1="385" y1="15" x2="385" y2="485" stroke="var(--color-divider)" stroke-width="0.7"/>
+          <line x1="485" y1="15" x2="485" y2="485" stroke="var(--color-divider)" stroke-width="0.7"/>
+          <line x1="585" y1="15" x2="585" y2="485" stroke="var(--color-divider)" stroke-width="0.7"/>
+          <line x1="685" y1="15" x2="685" y2="485" stroke="var(--color-divider)" stroke-width="0.7"/>
+          <line x1="785" y1="15" x2="785" y2="485" stroke="var(--color-divider)" stroke-width="0.7"/>
+
+          <!-- MATRIX DOTS: (cx, cy) = intersection of cluster row and case column -->
+          <!-- Row centers: C1=48, C2=126, C3=204, C4=282, C5=360, C6=438 -->
+          <!-- Col centers: Aqualisa=241, Ontela=341, TheYes=441, MannKind=541, Telenor=641, HotWheels=741 -->
+
+          <!-- AQUALISA: C1✓ C3✓ C4✓ C5✓ C6✓ (C2 partial) -->
+          <circle cx="241" cy="48" r="14" fill="var(--color-c1)" opacity="0.85"/>
+          <text x="241" y="53" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" font-weight="700" fill="white">●●●</text>
+          <circle cx="241" cy="126" r="10" fill="var(--color-c2)" opacity="0.4"/>
+          <circle cx="241" cy="204" r="14" fill="var(--color-c3)" opacity="0.85"/>
+          <circle cx="241" cy="282" r="10" fill="var(--color-c4)" opacity="0.6"/>
+          <circle cx="241" cy="360" r="14" fill="var(--color-c5)" opacity="0.85"/>
+          <circle cx="241" cy="438" r="10" fill="var(--color-c6)" opacity="0.6"/>
+
+          <!-- ONTELA: C2✓✓ C5✓✓ C1◑ C4◑ -->
+          <circle cx="341" cy="48" r="10" fill="var(--color-c1)" opacity="0.45"/>
+          <circle cx="341" cy="126" r="14" fill="var(--color-c2)" opacity="0.85"/>
+          <circle cx="341" cy="204" r="7" fill="var(--color-c3)" opacity="0.3"/>
+          <circle cx="341" cy="282" r="10" fill="var(--color-c4)" opacity="0.45"/>
+          <circle cx="341" cy="360" r="14" fill="var(--color-c5)" opacity="0.85"/>
+          <circle cx="341" cy="438" r="7" fill="var(--color-c6)" opacity="0.3"/>
+
+          <!-- THE YES: C2✓✓ C4✓✓ C5✓ C6✓ C1◑ C3◑ -->
+          <circle cx="441" cy="48" r="10" fill="var(--color-c1)" opacity="0.45"/>
+          <circle cx="441" cy="126" r="14" fill="var(--color-c2)" opacity="0.85"/>
+          <circle cx="441" cy="204" r="10" fill="var(--color-c3)" opacity="0.45"/>
+          <circle cx="441" cy="282" r="14" fill="var(--color-c4)" opacity="0.85"/>
+          <circle cx="441" cy="360" r="10" fill="var(--color-c5)" opacity="0.6"/>
+          <circle cx="441" cy="438" r="10" fill="var(--color-c6)" opacity="0.6"/>
+
+          <!-- MANNKIND: C1✓ C2✓ C5✓✓ C6✓ C4◑ C3◑ -->
+          <circle cx="541" cy="48" r="14" fill="var(--color-c1)" opacity="0.7"/>
+          <circle cx="541" cy="126" r="14" fill="var(--color-c2)" opacity="0.75"/>
+          <circle cx="541" cy="204" r="10" fill="var(--color-c3)" opacity="0.4"/>
+          <circle cx="541" cy="282" r="10" fill="var(--color-c4)" opacity="0.45"/>
+          <circle cx="541" cy="360" r="14" fill="var(--color-c5)" opacity="0.85"/>
+          <circle cx="541" cy="438" r="14" fill="var(--color-c6)" opacity="0.8"/>
+
+          <!-- TELENOR: C1✓✓ C4✓✓ C5✓✓ C2✓ C3✓ C6✓ -->
+          <circle cx="641" cy="48" r="14" fill="var(--color-c1)" opacity="0.85"/>
+          <circle cx="641" cy="126" r="10" fill="var(--color-c2)" opacity="0.6"/>
+          <circle cx="641" cy="204" r="10" fill="var(--color-c3)" opacity="0.5"/>
+          <circle cx="641" cy="282" r="14" fill="var(--color-c4)" opacity="0.85"/>
+          <circle cx="641" cy="360" r="14" fill="var(--color-c5)" opacity="0.85"/>
+          <circle cx="641" cy="438" r="10" fill="var(--color-c6)" opacity="0.6"/>
+
+          <!-- HOT WHEELS: C1✓ C3✓ C5✓ C6◑ C2◑ C4◑ -->
+          <circle cx="741" cy="48" r="14" fill="var(--color-c1)" opacity="0.75"/>
+          <circle cx="741" cy="126" r="7" fill="var(--color-c2)" opacity="0.35"/>
+          <circle cx="741" cy="204" r="14" fill="var(--color-c3)" opacity="0.75"/>
+          <circle cx="741" cy="282" r="7" fill="var(--color-c4)" opacity="0.35"/>
+          <circle cx="741" cy="360" r="14" fill="var(--color-c5)" opacity="0.75"/>
+          <circle cx="741" cy="438" r="10" fill="var(--color-c6)" opacity="0.5"/>
+        </svg>
+      </div>
+      <!-- Legend -->
+      <div class="legend" style="margin-top:var(--space-4)">
+        <div class="legend-item"><div class="legend-dot" style="background:var(--color-text);opacity:0.8;width:16px;height:16px;border-radius:50%"></div><span>Large dot = cluster central to the case</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--color-text);opacity:0.35;width:10px;height:10px;border-radius:50%"></div><span>Small dot = cluster partially activated</span></div>
+      </div>
+    </div>
+  </section>
+
 
   <!-- CONCEPT MAP -->
   <section id="concept-map-section">
@@ -743,6 +1031,306 @@ searchInput.addEventListener("input", () => {
 // ===================== INIT =====================
 renderHeroPills();
 renderClusters();
+
+// ===================== CASES DATA =====================
+const cases = [
+  {
+    id: "case-aqualisa",
+    number: "01",
+    eyebrow: "Channel Strategy · Market Sizing",
+    title: "Aqualisa Quartz: Simply a Better Shower",
+    dilemma: "A technically superior product selling far below expectations — is the problem the channel, the plumber, the segment, or the strategy itself?",
+    color: "var(--color-c3)",
+    bg: "var(--color-c3-bg)",
+    noPresentation: false,
+    klos: [
+      { name: "5C Model", cluster: 3, color: "var(--color-c3)", bg: "var(--color-c3-bg)" },
+      { name: "Market Sizing", cluster: 1, color: "var(--color-c1)", bg: "var(--color-c1-bg)" },
+      { name: "Tapped vs Untapped Market", cluster: 2, color: "var(--color-c2)", bg: "var(--color-c2-bg)" },
+      { name: "Product Life Cycle", cluster: 3, color: "var(--color-c3)", bg: "var(--color-c3-bg)" },
+      { name: "Numeric Distribution", cluster: 1, color: "var(--color-c1)", bg: "var(--color-c1-bg)" },
+      { name: "Weighted Distribution", cluster: 1, color: "var(--color-c1)", bg: "var(--color-c1-bg)" },
+      { name: "Perceived Value", cluster: 2, color: "var(--color-c2)", bg: "var(--color-c2-bg)" },
+      { name: "Segmentation", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Targeting", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Cannibalization", cluster: 3, color: "var(--color-c3)", bg: "var(--color-c3-bg)" },
+      { name: "Coherence and Consistency", cluster: 4, color: "var(--color-c4)", bg: "var(--color-c4-bg)" },
+      { name: "Product-Market Fit", cluster: 2, color: "var(--color-c2)", bg: "var(--color-c2-bg)" },
+      { name: "Setting Objectives", cluster: 4, color: "var(--color-c4)", bg: "var(--color-c4-bg)" },
+      { name: "Return on Sales (RoS)", cluster: 1, color: "var(--color-c1)", bg: "var(--color-c1-bg)" },
+      { name: "Sale Force Effectiveness", cluster: 1, color: "var(--color-c1)", bg: "var(--color-c1-bg)" }
+    ],
+    moves: [
+      "The real problem was not execution but an ambiguous strategy with no clear target segment — solving the symptom (low sales) without diagnosing the cause.",
+      "Three segments exist: Value (DIY, price-sensitive), Standard (trade channel, performance-driven), Premium (showrooms, design & experience). Quartz fits Standard and Premium, not Value.",
+      "The plumber is a gatekeeper with inverted incentives: Quartz installs in 4 hours vs. 16 for conventional — cutting their billable time. True Economic Value for plumbers was ignored at launch.",
+      "Perceived value calculation: conventional shower costs consumers ~€2,300 total; Quartz ~€1,420. The saving is real but was never communicated.",
+      "Weighted Distribution in premium showrooms was only 25% — the channel most aligned with the product's value was the least developed.",
+      "A coherent mix requires aligning product, price, place, and promotion to the same segment — Quartz was positioned for everyone, which meant no one."
+    ],
+    lesson: "Poor execution, ambiguous strategy, and unrealistic objectives are three distinct failure modes — and the most dangerous is confusing them. Diagnosing a symptom (low sales) as a channel problem when the root is a missing targeting decision delays the real fix indefinitely."
+  },
+  {
+    id: "case-ontela",
+    number: "02",
+    eyebrow: "Segmentation · Targeting · JTBD",
+    title: "Ontela PicDeck: Who Should We Target?",
+    dilemma: "Three qualitative personas (A) or six quantitative clusters (B) — and which segment makes economic sense for a mobile photo transfer startup?",
+    color: "var(--color-c5)",
+    bg: "var(--color-c5-bg)",
+    noPresentation: false,
+    klos: [
+      { name: "Market Definition", cluster: 1, color: "var(--color-c1)", bg: "var(--color-c1-bg)" },
+      { name: "Product or JTBD", cluster: 1, color: "var(--color-c1)", bg: "var(--color-c1-bg)" },
+      { name: "Segmentation", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "MIDAS", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Qualitative Vs Quantitative", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "WHO–WHAT–HOW", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Targeting", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Why we target", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Criteria for targeting", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Priority Matrix", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "CAC", cluster: 2, color: "var(--color-c2)", bg: "var(--color-c2-bg)" },
+      { name: "CLV", cluster: 2, color: "var(--color-c2)", bg: "var(--color-c2-bg)" },
+      { name: "Product-Market Fit", cluster: 2, color: "var(--color-c2)", bg: "var(--color-c2-bg)" },
+      { name: "Setting Objectives", cluster: 4, color: "var(--color-c4)", bg: "var(--color-c4-bg)" }
+    ],
+    moves: [
+      "Ontela is not in 'photo transfer technology' — it is in 'mobile digital memory management'. Defining the market by the product rather than the customer job leads to undersized opportunity and wrong competitors.",
+      "Qualitative personas (Sarah, Steve, Regina) reveal motivations and JTBD but fail the MIDAS test: personas are not measurable or reliably identifiable at scale.",
+      "Quantitative Case B provides six clusters with size, WTP, adoption readiness, and payer control data — enabling real economic comparison.",
+      "Cluster 1 (24%, median age 42, highest internet use, $5.75 WTP) is the best primary launch target: balance of scale, readiness, payer control, and fit.",
+      "Cluster 3 (19%, age 22, social/media oriented, $7.93 WTP) is the best quick-win for buzz — but payer friction (family plan) requires a separate strategy.",
+      "Priority Matrix logic: Economic Impact × Ease of Perception Change. C1 and C3 are top priority; C6 (lowest WTP, lowest adoption) should be rejected at launch."
+    ],
+    lesson: "A segment is not attractive merely because it is large, young, or socially engaged. It must combine pain intensity, willingness to pay, adoption readiness, payer control, and carrier revenue logic simultaneously. Qualitative and quantitative segmentation are complements, not alternatives."
+  },
+  {
+    id: "case-theyes",
+    number: "03",
+    eyebrow: "CAC · CLV · Product-Market Fit · Channels",
+    title: "The YES: Algorithm or Acquisition?",
+    dilemma: "$5 million to invest — improve the AI recommendation engine or pour it into paid customer acquisition?",
+    color: "var(--color-c2)",
+    bg: "var(--color-c2-bg)",
+    noPresentation: false,
+    klos: [
+      { name: "Product or JTBD", cluster: 1, color: "var(--color-c1)", bg: "var(--color-c1-bg)" },
+      { name: "CAC", cluster: 2, color: "var(--color-c2)", bg: "var(--color-c2-bg)" },
+      { name: "CLV", cluster: 2, color: "var(--color-c2)", bg: "var(--color-c2-bg)" },
+      { name: "CLSV", cluster: 2, color: "var(--color-c2)", bg: "var(--color-c2-bg)" },
+      { name: "Product-Market Fit", cluster: 2, color: "var(--color-c2)", bg: "var(--color-c2-bg)" },
+      { name: "Perceived Value", cluster: 2, color: "var(--color-c2)", bg: "var(--color-c2-bg)" },
+      { name: "Value Based Pricing", cluster: 2, color: "var(--color-c2)", bg: "var(--color-c2-bg)" },
+      { name: "Push Vs Pull demand", cluster: 2, color: "var(--color-c2)", bg: "var(--color-c2-bg)" },
+      { name: "Segmentation", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Targeting", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "USP Vs POD", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Positioning", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Setting Objectives", cluster: 4, color: "var(--color-c4)", bg: "var(--color-c4-bg)" },
+      { name: "Market Growth", cluster: 4, color: "var(--color-c4)", bg: "var(--color-c4-bg)" },
+      { name: "Coherence and Consistency", cluster: 4, color: "var(--color-c4)", bg: "var(--color-c4-bg)" },
+      { name: "Competitive Advantage", cluster: 6, color: "var(--color-c6)", bg: "var(--color-c6-bg)" }
+    ],
+    moves: [
+      "The YES has two distinct segments: Fashionistas (20%) who use the smart search for precision, and Followers (80%) who need inspiration and recommendation. Wrong segment = wrong performance metric.",
+      "Current economics: $100 CAC, 4% conversion on 30,000 installs → 1,200 transactions, $225 AOV, 25% commission = $67.5k revenue. First order does not cover acquisition cost.",
+      "Option A ($5M paid media): 50,000 new customers, -$2.19M first-order contribution. Scales the loss without fixing the engine.",
+      "Option B ($5M algorithm): conversion +40%, churn -30% → LTV/CAC improves 2×. Effective CAC drops from $100 to $71.43. The same ad spend produces more buyers.",
+      "The Iron Law of Distribution: channels can change, but channel functions (demand generation, demand fulfillment, after-sales, feedback) always remain. The YES must decide which it internalises.",
+      "Product-Market Fit must be proven before scaling acquisition. 'If we feed the application to the wrong users, you can't blame the application for its performance.'"
+    ],
+    lesson: "Scaling CAC before Product-Market Fit is proven amplifies failure, not growth. Traffic × Conversion × Average Basket × Retention is a system — improving one lever while the others leak produces diminishing returns. Fix the engine before filling the tank."
+  },
+  {
+    id: "case-mannkind",
+    number: "04",
+    eyebrow: "Positioning · Brand Pyramid · PMF",
+    title: "MannKind / Afrezza: Two Launches, One Product",
+    dilemma: "An inhaled insulin with superior pharmacokinetics failed its first launch. Can a repositioning and new targeting logic rescue it?",
+    color: "var(--color-c5)",
+    bg: "var(--color-c5-bg)",
+    noPresentation: false,
+    klos: [
+      { name: "Market Sizing", cluster: 1, color: "var(--color-c1)", bg: "var(--color-c1-bg)" },
+      { name: "Market demand", cluster: 1, color: "var(--color-c1)", bg: "var(--color-c1-bg)" },
+      { name: "Tapped vs Untapped Market", cluster: 2, color: "var(--color-c2)", bg: "var(--color-c2-bg)" },
+      { name: "Perceived Value", cluster: 2, color: "var(--color-c2)", bg: "var(--color-c2-bg)" },
+      { name: "Value Based Pricing", cluster: 2, color: "var(--color-c2)", bg: "var(--color-c2-bg)" },
+      { name: "Product-Market Fit", cluster: 2, color: "var(--color-c2)", bg: "var(--color-c2-bg)" },
+      { name: "Push Vs Pull demand", cluster: 2, color: "var(--color-c2)", bg: "var(--color-c2-bg)" },
+      { name: "Segmentation", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Targeting", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "USP Vs POD", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Brand pyramid and values", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Positioning statement", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Pitfalls of Positioning", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Coherence and Consistency", cluster: 4, color: "var(--color-c4)", bg: "var(--color-c4-bg)" },
+      { name: "Competitive Advantage", cluster: 6, color: "var(--color-c6)", bg: "var(--color-c6-bg)" },
+      { name: "Analysis–Audit–Strategy–Execution", cluster: 6, color: "var(--color-c6)", bg: "var(--color-c6-bg)" }
+    ],
+    moves: [
+      "Launch 1.0 (Sanofi) market funnel: 29M diabetics → 4M rapid-acting relevant → 2.55M Type 2 target → 'regimen' segment ~0.89M. The funnel leaked at every gate: prescriber willingness, spirometry access, payer coverage, pharmacy stock.",
+      "Launch 1.0 positioning failure: 'convenient administration' (no needles) is a nice-to-have for PCPs but not a must-have. It built a 'nicer insulin' brand, not a 'better insulin' brand. PCPs and insurers need clinical differentiation, not comfort.",
+      "Launch 2.0 insight: Afrezza is not about inhalation. It is an ultra-fast-action insulin. Onset <15 min, peak 12–15 min, shorter duration — a clinically meaningful PK advantage for postprandial control.",
+      "Repositioning target: from PCPs and needle-phobic patients → to endocrinologists and insulin-dependent patients who need real-meal-time glucose control.",
+      "Full 4-stakeholder mix required: physician (KOL detailing, subsidised spirometers), patient (DTC stories within FDA rules), payer (outcomes evidence, risk-sharing), pharmacy (stocking incentives, expiry support).",
+      "Positioning statement: 'For endocrinologists and their insulin-dependent patients, Afrezza is the ultra-rapid mealtime insulin that improves meal control and time-in-range because it delivers insulin in its active monomer form via pulmonary absorption.'"
+    ],
+    lesson: "Positioning on a feature the gatekeeper does not value is not positioning — it is noise. A POD must be ownable, credible to the decision-maker, and grounded in a genuine clinical or functional advantage. 'Nice to have' never justifies a prescribing behaviour change."
+  },
+  {
+    id: "case-telenor",
+    number: "05",
+    eyebrow: "Market Opportunity · GTM · Full STP",
+    title: "Telenor Serbia: Reinventing Financial Services",
+    dilemma: "Should a telecom operator launch a mobile bank in a low-digital-adoption market — and if so, for whom?",
+    color: "var(--color-c4)",
+    bg: "var(--color-c4-bg)",
+    noPresentation: false,
+    klos: [
+      { name: "Market Definition", cluster: 1, color: "var(--color-c1)", bg: "var(--color-c1-bg)" },
+      { name: "Market Sizing", cluster: 1, color: "var(--color-c1)", bg: "var(--color-c1-bg)" },
+      { name: "Market penetration", cluster: 1, color: "var(--color-c1)", bg: "var(--color-c1-bg)" },
+      { name: "Tapped vs Untapped Market", cluster: 2, color: "var(--color-c2)", bg: "var(--color-c2-bg)" },
+      { name: "Market Opportunity", cluster: 3, color: "var(--color-c3)", bg: "var(--color-c3-bg)" },
+      { name: "Market Growth", cluster: 4, color: "var(--color-c4)", bg: "var(--color-c4-bg)" },
+      { name: "Market Share growth", cluster: 4, color: "var(--color-c4)", bg: "var(--color-c4-bg)" },
+      { name: "Setting Objectives", cluster: 4, color: "var(--color-c4)", bg: "var(--color-c4-bg)" },
+      { name: "Stakeholder analysis", cluster: 4, color: "var(--color-c4)", bg: "var(--color-c4-bg)" },
+      { name: "Segmentation", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Segments are dynamic", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Targeting", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Strategies of targeting", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Priority Matrix", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Positioning", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Brand pyramid and values", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Positioning statement", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "CLV", cluster: 2, color: "var(--color-c2)", bg: "var(--color-c2-bg)" },
+      { name: "Product-Market Fit", cluster: 2, color: "var(--color-c2)", bg: "var(--color-c2-bg)" },
+      { name: "Competitive Advantage", cluster: 6, color: "var(--color-c6)", bg: "var(--color-c6-bg)" }
+    ],
+    moves: [
+      "Market sizing: TAM = 5.2M banked Serbians, SAM = 1.5–1.6M (smartphone owners), SOM = 6–9% (current digital banking penetration). Low adoption is an education and trust problem, not a product problem.",
+      "The real opportunity is the 'willing but hesitant' majority: 34% conditional willingness + 31% willing if fees lower + 62% of non-users who know little about it.",
+      "Six quantitative segments from GfK. Priority Matrix: Seg 1 (efficiency + status, 12%), Seg 3 (simplicity + cost, 13%), Seg 6 (innovation + speed, 4%) → top priority. Multi-segment strategy with one unifying proposition.",
+      "Unified value proposition: 'Efficient, simple, digitally delivered banking with minimal friction — control and convenience without bureaucracy.'",
+      "Brand pyramid: 24/7 access → save time / convenience → in control / worry-free → peace of mind about finance. Laddered from concrete attributes to personal values.",
+      "Full GTM deployment: product roadmap from transactions → savings → credit; pricing from pay-per-transaction to freemium; distribution from single channel to omnichannel; communication via 6M IMCP framework."
+    ],
+    lesson: "Low market penetration is not evidence of weak demand — it is often evidence of unsolved barriers: trust, awareness, infrastructure, or complexity. Defining the market opportunity correctly (convert the hesitant majority) determines whether the strategy is growth or share-stealing — and only the former is appropriate for a market entrant."
+  },
+  {
+    id: "case-hotwheels",
+    number: "06",
+    eyebrow: "Market Definition · Brand Extension · Digital Disruption",
+    title: "Hot Wheels: Launching the Mixed Play Experience",
+    dilemma: "How does a legacy physical toy brand extend into digital-physical hybrid play without diluting its core identity or cannibalising its existing business?",
+    color: "var(--color-c3)",
+    bg: "var(--color-c3-bg)",
+    noPresentation: true,
+    klos: [
+      { name: "Market Definition", cluster: 1, color: "var(--color-c1)", bg: "var(--color-c1-bg)" },
+      { name: "Too Narrow / Too Broad", cluster: 1, color: "var(--color-c1)", bg: "var(--color-c1-bg)" },
+      { name: "Market Sizing", cluster: 1, color: "var(--color-c1)", bg: "var(--color-c1-bg)" },
+      { name: "Tapped vs Untapped Market", cluster: 2, color: "var(--color-c2)", bg: "var(--color-c2-bg)" },
+      { name: "Product Life Cycle", cluster: 3, color: "var(--color-c3)", bg: "var(--color-c3-bg)" },
+      { name: "Cannibalization", cluster: 3, color: "var(--color-c3)", bg: "var(--color-c3-bg)" },
+      { name: "Market Opportunity", cluster: 3, color: "var(--color-c3)", bg: "var(--color-c3-bg)" },
+      { name: "Product or JTBD", cluster: 1, color: "var(--color-c1)", bg: "var(--color-c1-bg)" },
+      { name: "Segmentation", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Targeting", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Brand pyramid and values", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Positioning", cluster: 5, color: "var(--color-c5)", bg: "var(--color-c5-bg)" },
+      { name: "Product-Market Fit", cluster: 2, color: "var(--color-c2)", bg: "var(--color-c2-bg)" },
+      { name: "Coherence and Consistency", cluster: 4, color: "var(--color-c4)", bg: "var(--color-c4-bg)" },
+      { name: "Competitive Advantage", cluster: 6, color: "var(--color-c6)", bg: "var(--color-c6-bg)" }
+    ],
+    moves: [
+      "Market definition risk: defining Hot Wheels as 'die-cast toy cars' (too narrow) misses the JTBD — children seek speed, mastery, and creative play; they don't buy cars, they buy the experience of control and excitement.",
+      "Digital disruption (tablets, gaming) is not just a new competitor — it is a category redefinition. The physical toy market is a mature, stagnating category; digital play is the growth vector.",
+      "Cannibalization question: does mixed play (physical + digital) grow the total experience pie or simply convert physical buyers into hybrid buyers at lower margin?",
+      "Segmentation: core fans (age 3–8, physical play, parent-purchased) vs. digital natives (age 8–12, tablet fluent, influencer-aware). Each segment has a distinct JTBD and a different brand salience.",
+      "Brand pyramid tension: Hot Wheels equity is built on 'speed, thrill, real' — translating that to a screen requires that digital play feels as visceral as the physical crash of a real car on a real track.",
+      "Coherence test: every element of the mixed-play experience (track, controller, app, visual identity) must reinforce the same brand promise. If the digital layer feels generic, the physical brand is weakened, not extended."
+    ],
+    lesson: "Brand extension into new formats only works when the core brand JTBD (thrill, mastery, speed) is preserved and amplified in the new medium — not translated literally. The risk is not cannibalisation of the physical product, but dilution of the emotional reason to believe in the brand at all."
+  }
+];
+
+function renderCases() {
+  const container = document.getElementById("cases-container");
+  container.innerHTML = "";
+  cases.forEach((c, i) => {
+    const card = document.createElement("div");
+    card.className = "case-card";
+    card.id = c.id;
+
+    const noPresHtml = c.noPresentation
+      ? `<span class="no-presentation-badge">
+           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+           Analysis only
+         </span>` : "";
+
+    const tagsHtml = c.klos.map(k => {
+      const targetId = "cluster-" + k.cluster;
+      return `<a class="klo-tag" href="#${targetId}" 
+        style="background:${k.bg};color:${k.color};border-color:color-mix(in oklab, ${k.color} 25%, transparent)"
+        onclick="event.stopPropagation()">${k.name}</a>`;
+    }).join("");
+
+    const movesHtml = c.moves.map(m =>
+      `<li><span class="move-bullet" style="background:${c.color}"></span><span>${m}</span></li>`
+    ).join("");
+
+    card.innerHTML = `
+      <div class="case-card-header" onclick="toggleCase(this.closest('.case-card'))">
+        <div class="case-number">${c.number}</div>
+        <div class="case-header-meta">
+          <div class="case-eyebrow">${c.eyebrow}${noPresHtml}</div>
+          <h3 class="case-title">${c.title}</h3>
+          <p class="case-dilemma">${c.dilemma}</p>
+        </div>
+        <div class="case-chevron" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-body-inner">
+          <div>
+            <div class="case-col-title">KLOs Activated</div>
+            <div class="klo-tag-list">${tagsHtml}</div>
+          </div>
+          <div>
+            <div class="case-col-title">Key Moves &amp; Analysis</div>
+            <ul class="case-moves">${movesHtml}</ul>
+          </div>
+          <div class="case-lesson">
+            <span class="lesson-icon">💡</span>
+            <p class="lesson-text"><strong>Core Lesson:</strong> ${c.lesson}</p>
+          </div>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function toggleCase(card) {
+  card.classList.toggle("open");
+}
+
+function scrollToCase(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    setTimeout(() => { if (!el.classList.contains("open")) el.classList.add("open"); }, 400);
+  }
+}
+
+// ===================== INIT (append) =====================
+renderCases();
+
 </script>
 </body>
 </html>
