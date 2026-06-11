@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing Strategies – KLO Diary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300..700&display=swap" rel="stylesheet">
+<style>
+/* ===================== TOKENS ===================== */
+:root, [data-theme="light"] {
+  --color-bg: #f7f6f2;
+  --color-surface: #f9f8f5;
+  --color-surface-2: #fbfbf9;
+  --color-surface-offset: #f0ede8;
+  --color-divider: #dcd9d5;
+  --color-border: #d4d1ca;
+  --color-text: #28251d;
+  --color-text-muted: #7a7974;
+  --color-text-faint: #bab9b4;
+  --color-text-inverse: #f9f8f4;
+  --color-primary: #01696f;
+  --color-primary-hover: #0c4e54;
+  --color-primary-light: #e0eeed;
+  --color-c1: #437a22; /* Market Intelligence – green */
+  --color-c1-bg: #eef4e9;
+  --color-c2: #006494; /* Customer & Value – blue */
+  --color-c2-bg: #e4f0f7;
+  --color-c3: #964219; /* Strategic Env – amber */
+  --color-c3-bg: #f5ece4;
+  --color-c4: #d19900; /* GTM – gold */
+  --color-c4-bg: #faf3d9;
+  --color-c5: #7a39bb; /* STP – purple */
+  --color-c5-bg: #f0eaf9;
+  --color-c6: #a12c7b; /* Strategy & Exec – rose */
+  --color-c6-bg: #f7e9f2;
+  --shadow-sm: 0 1px 3px oklch(0.2 0.01 80 / 0.07);
+  --shadow-md: 0 4px 14px oklch(0.2 0.01 80 / 0.09);
+  --shadow-lg: 0 12px 36px oklch(0.2 0.01 80 / 0.12);
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1.25rem;
+  --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'DM Sans', 'Helvetica Neue', sans-serif;
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+  --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+  --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+  --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem;
+  --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem;
+  --space-16: 4rem;
+}
+[data-theme="dark"] {
+  --color-bg: #171614;
+  --color-surface: #1c1b19;
+  --color-surface-2: #201f1d;
+  --color-surface-offset: #22211f;
+  --color-divider: #2d2c2a;
+  --color-border: #393836;
+  --color-text: #cdccca;
+  --color-text-muted: #797876;
+  --color-text-faint: #5a5957;
+  --color-text-inverse: #2b2a28;
+  --color-primary: #4f98a3;
+  --color-primary-hover: #227f8b;
+  --color-primary-light: #1e3638;
+  --color-c1: #6daa45; --color-c1-bg: #1e2e16;
+  --color-c2: #5591c7; --color-c2-bg: #192535;
+  --color-c3: #bb653b; --color-c3-bg: #2e1f14;
+  --color-c4: #e8af34; --color-c4-bg: #2b2512;
+  --color-c5: #a86fdf; --color-c5-bg: #231537;
+  --color-c6: #d163a7; --color-c6-bg: #2e1227;
+  --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.25);
+  --shadow-md: 0 4px 14px oklch(0 0 0 / 0.35);
+  --shadow-lg: 0 12px 36px oklch(0 0 0 / 0.45);
+}
+
+/* ===================== BASE ===================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font-body); font-size: var(--text-base); color: var(--color-text); background: var(--color-bg); min-height: 100dvh; line-height: 1.65; transition: background var(--transition), color var(--transition); }
+img { display: block; max-width: 100%; height: auto; }
+button { cursor: pointer; font: inherit; background: none; border: none; color: inherit; }
+ul { list-style: none; }
+a { color: inherit; text-decoration: none; }
+h1,h2,h3,h4 { font-family: var(--font-display); text-wrap: balance; line-height: 1.15; }
+p, li { text-wrap: pretty; }
+
+/* ===================== SKIP LINK ===================== */
+.skip-link { position: absolute; left: -9999px; }
+.skip-link:focus { left: var(--space-4); top: var(--space-4); z-index: 9999; padding: var(--space-2) var(--space-4); background: var(--color-primary); color: var(--color-text-inverse); border-radius: var(--radius-md); }
+
+/* ===================== HEADER ===================== */
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--space-3) var(--space-6);
+  background: oklch(from var(--color-bg) l c h / 0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid oklch(from var(--color-text) l c h / 0.08);
+  transition: background var(--transition), border-color var(--transition);
+}
+.logo-wrap { display: flex; align-items: center; gap: var(--space-3); }
+.logo-text { font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text); letter-spacing: -0.01em; }
+.logo-text span { color: var(--color-primary); }
+.header-nav { display: flex; align-items: center; gap: var(--space-2); }
+.theme-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: var(--radius-full, 9999px);
+  color: var(--color-text-muted);
+  transition: color var(--transition), background var(--transition);
+}
+.theme-btn:hover { background: var(--color-surface-offset); color: var(--color-text); }
+.pill-nav { display: flex; gap: var(--space-1); background: var(--color-surface-offset); border-radius: 9999px; padding: var(--space-1); }
+.pill-nav a { font-size: var(--text-sm); font-weight: 500; padding: var(--space-1) var(--space-3); border-radius: 9999px; color: var(--color-text-muted); transition: color var(--transition), background var(--transition); }
+.pill-nav a:hover, .pill-nav a.active { color: var(--color-text); background: var(--color-surface-2); }
+
+/* ===================== HERO ===================== */
+.hero {
+  padding: clamp(var(--space-12), 8vw, var(--space-16)) var(--space-6);
+  text-align: center;
+  background: linear-gradient(in oklab, var(--color-bg) 60%, var(--color-primary-light));
+  border-bottom: 1px solid oklch(from var(--color-text) l c h / 0.06);
+}
+.hero-eyebrow { font-family: var(--font-body); font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--space-4); }
+.hero h1 { font-size: var(--text-2xl); font-style: italic; color: var(--color-text); margin-bottom: var(--space-4); max-width: 18ch; margin-inline: auto; }
+.hero-sub { font-size: var(--text-base); color: var(--color-text-muted); max-width: 52ch; margin-inline: auto; margin-bottom: var(--space-8); }
+.hero-clusters { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-2); }
+.cluster-pill {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: 9999px; font-size: var(--text-sm); font-weight: 500;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+}
+.cluster-pill:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.cluster-pill:active { transform: translateY(0); }
+.cluster-pill .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* ===================== MAIN LAYOUT ===================== */
+.main-wrap { max-width: 1100px; margin-inline: auto; padding: var(--space-10) var(--space-6); }
+
+/* ===================== CLUSTER SECTION ===================== */
+.cluster-section {
+  margin-bottom: var(--space-12);
+  scroll-margin-top: 5rem;
+  opacity: 1;
+}
+
+@supports (animation-timeline: scroll()) {
+  .cluster-section {
+    opacity: 0;
+    animation: fade-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 60%;
+  }
+  @keyframes fade-in { to { opacity: 1; } }
+}
+
+.cluster-header {
+  display: flex; align-items: flex-start; gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+.cluster-icon {
+  flex-shrink: 0;
+  width: 48px; height: 48px; border-radius: var(--radius-lg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+}
+.cluster-meta { flex: 1; }
+.cluster-tag { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: var(--space-1); }
+.cluster-title { font-size: var(--text-xl); margin-bottom: var(--space-2); }
+.cluster-desc { font-size: var(--text-sm); color: var(--color-text-muted); max-width: 60ch; }
+
+/* KLO GRID */
+.klo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
+  gap: var(--space-3);
+}
+.klo-card {
+  background: var(--color-surface);
+  border: 1px solid oklch(from var(--color-text) l c h / 0.08);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  cursor: pointer;
+  position: relative;
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+}
+.klo-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.klo-card:active { transform: translateY(0); box-shadow: var(--shadow-sm); }
+.klo-card.expanded { box-shadow: var(--shadow-lg); }
+.klo-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-2); }
+.klo-name { font-size: var(--text-sm); font-weight: 600; color: var(--color-text); line-height: 1.3; }
+.expand-icon { flex-shrink: 0; width: 20px; height: 20px; color: var(--color-text-faint); transition: transform var(--transition), color var(--transition); margin-top: 2px; }
+.klo-card.expanded .expand-icon { transform: rotate(45deg); color: var(--color-text-muted); }
+.klo-body {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 380ms cubic-bezier(0.16, 1, 0.3, 1), opacity 300ms ease;
+  opacity: 0;
+}
+.klo-card.expanded .klo-body { max-height: 400px; opacity: 1; }
+.klo-body-inner { padding-top: var(--space-3); border-top: 1px solid oklch(from var(--color-text) l c h / 0.08); margin-top: var(--space-3); }
+.klo-body-inner p { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.7; }
+.klo-body-inner .kpi-badge { display: inline-block; margin-top: var(--space-2); font-size: var(--text-xs); font-weight: 600; padding: 2px var(--space-2); border-radius: var(--radius-sm); letter-spacing: 0.04em; }
+.klo-body-inner .links-list { margin-top: var(--space-3); }
+.klo-body-inner .links-list-title { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-faint); margin-bottom: var(--space-2); }
+.klo-body-inner .links-list ul { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.link-tag { font-size: var(--text-xs); padding: 2px var(--space-2); border-radius: 9999px; background: var(--color-surface-offset); color: var(--color-text-muted); border: 1px solid oklch(from var(--color-text) l c h / 0.08); }
+
+/* ===================== CONCEPT MAP SECTION ===================== */
+#concept-map-section { margin-bottom: var(--space-12); }
+#concept-map-section h2 { font-size: var(--text-xl); margin-bottom: var(--space-2); }
+#concept-map-section .section-sub { font-size: var(--text-sm); color: var(--color-text-muted); max-width: 55ch; margin-bottom: var(--space-8); }
+
+.map-container {
+  background: var(--color-surface);
+  border: 1px solid oklch(from var(--color-text) l c h / 0.08);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  overflow: hidden;
+}
+.map-svg-wrap { width: 100%; overflow-x: auto; }
+.map-svg-wrap svg { min-width: 640px; width: 100%; height: auto; display: block; }
+
+/* SVG concept map styles */
+.node-circle { transition: opacity 0.2s; }
+.node-circle:hover { opacity: 0.85; cursor: pointer; }
+.arc-line { stroke-dasharray: 5 4; opacity: 0.45; }
+.arc-line-solid { opacity: 0.55; }
+.kpi-connector { stroke-dasharray: 3 3; opacity: 0.5; }
+
+/* ===================== LEGEND ===================== */
+.legend { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); margin-top: var(--space-6); }
+.legend-item { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-xs); color: var(--color-text-muted); }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+/* ===================== SEARCH ===================== */
+.search-wrap {
+  position: relative; max-width: 480px; margin-bottom: var(--space-8);
+}
+.search-input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4) var(--space-3) 2.75rem;
+  border: 1px solid oklch(from var(--color-text) l c h / 0.15);
+  border-radius: 9999px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+.search-input:focus { border-color: var(--color-primary); box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.15); }
+.search-icon { position: absolute; left: var(--space-4); top: 50%; transform: translateY(-50%); color: var(--color-text-faint); pointer-events: none; }
+.search-count { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-2); }
+
+/* ===================== SECTION DIVIDER ===================== */
+.section-divider { height: 1px; background: var(--color-divider); margin: var(--space-12) 0; }
+
+/* ===================== FOOTER ===================== */
+.site-footer {
+  padding: var(--space-8) var(--space-6);
+  border-top: 1px solid oklch(from var(--color-text) l c h / 0.07);
+  text-align: center;
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 640px) {
+  .pill-nav { display: none; }
+  .site-header { padding: var(--space-3) var(--space-4); }
+  .main-wrap { padding: var(--space-8) var(--space-4); }
+  .cluster-header { flex-direction: column; gap: var(--space-3); }
+  .map-container { padding: var(--space-4); }
+}
+
+/* ===================== HIGHLIGHT ===================== */
+.klo-card.hidden-search { opacity: 0.2; pointer-events: none; }
+.highlight { background: oklch(from var(--color-primary) l c h / 0.25); border-radius: 2px; }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="logo-wrap">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-label="Marketing Strategies KLO">
+      <circle cx="16" cy="16" r="14" fill="var(--color-primary)" opacity="0.15"/>
+      <circle cx="16" cy="16" r="9" stroke="var(--color-primary)" stroke-width="1.5" fill="none"/>
+      <circle cx="16" cy="7" r="3" fill="var(--color-primary)"/>
+      <circle cx="25" cy="22" r="3" fill="var(--color-c5)"/>
+      <circle cx="7" cy="22" r="3" fill="var(--color-c3)"/>
+      <line x1="16" y1="10" x2="23" y2="20" stroke="var(--color-text-faint)" stroke-width="1"/>
+      <line x1="16" y1="10" x2="9" y2="20" stroke="var(--color-text-faint)" stroke-width="1"/>
+      <line x1="22" y1="22" x2="10" y2="22" stroke="var(--color-text-faint)" stroke-width="1"/>
+    </svg>
+    <span class="logo-text">KLO<span> Diary</span></span>
+  </div>
+  <nav class="header-nav" aria-label="Clusters">
+    <div class="pill-nav">
+      <a href="#cluster-1">Market Intel</a>
+      <a href="#cluster-2">Customer</a>
+      <a href="#cluster-3">Strategy</a>
+      <a href="#cluster-4">GTM</a>
+      <a href="#cluster-5">STP</a>
+      <a href="#cluster-6">Execution</a>
+      <a href="#concept-map-section">Map</a>
+    </div>
+    <button class="theme-btn" data-theme-toggle aria-label="Toggle dark mode">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">Marketing Strategies in a Digital Environment</p>
+  <h1>Key Learning Outcome Diary</h1>
+  <p class="hero-sub">65 concepts organised into 6 strategic clusters. Click any card to expand its definition, KPIs, and cross-links.</p>
+  <div class="hero-clusters" id="hero-cluster-pills"></div>
+</section>
+
+<!-- MAIN -->
+<main class="main-wrap" id="main">
+
+  <!-- SEARCH -->
+  <div class="search-wrap">
+    <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="search" class="search-input" id="klo-search" placeholder="Search concepts, e.g. CAC, segmentation…" aria-label="Search KLOs">
+  </div>
+  <p class="search-count" id="search-count"></p>
+
+  <!-- CLUSTERS RENDERED BY JS -->
+  <div id="clusters-container"></div>
+
+  <div class="section-divider"></div>
+
+  <!-- CONCEPT MAP -->
+  <section id="concept-map-section">
+    <h2>Connecting the Dots</h2>
+    <p class="section-sub">All six clusters form a continuous strategic loop. KPIs bridge each stage.</p>
+    <div class="map-container">
+      <div class="map-svg-wrap">
+        <svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Concept map showing the six KLO clusters in a strategic loop connected by KPIs">
+          <!-- Background -->
+          <defs>
+            <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L8,3 z" fill="#999"/>
+            </marker>
+            <marker id="arrow-gold" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L8,3 z" fill="#d19900"/>
+            </marker>
+          </defs>
+
+          <!-- ① Market Intelligence (top) -->
+          <g class="node-circle" onclick="scrollToCluster('cluster-1')">
+            <circle cx="350" cy="60" r="52" fill="#437a22" opacity="0.15"/>
+            <circle cx="350" cy="60" r="44" fill="#437a22" opacity="0.22"/>
+            <text x="350" y="53" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#437a22">①</text>
+            <text x="350" y="67" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#437a22">Market</text>
+            <text x="350" y="80" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#437a22">Intelligence</text>
+          </g>
+
+          <!-- ② Customer & Value (top right) -->
+          <g class="node-circle" onclick="scrollToCluster('cluster-2')">
+            <circle cx="564" cy="170" r="52" fill="#006494" opacity="0.15"/>
+            <circle cx="564" cy="170" r="44" fill="#006494" opacity="0.22"/>
+            <text x="564" y="163" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#006494">②</text>
+            <text x="564" y="177" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#006494">Customer</text>
+            <text x="564" y="190" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#006494">&amp; Value</text>
+          </g>
+
+          <!-- ③ Strategic Env (bottom right) -->
+          <g class="node-circle" onclick="scrollToCluster('cluster-3')">
+            <circle cx="490" cy="340" r="52" fill="#964219" opacity="0.15"/>
+            <circle cx="490" cy="340" r="44" fill="#964219" opacity="0.22"/>
+            <text x="490" y="333" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#964219">③</text>
+            <text x="490" y="347" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#964219">Strategic</text>
+            <text x="490" y="360" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#964219">Environment</text>
+          </g>
+
+          <!-- ④ GTM (bottom left) -->
+          <g class="node-circle" onclick="scrollToCluster('cluster-4')">
+            <circle cx="210" cy="340" r="52" fill="#d19900" opacity="0.15"/>
+            <circle cx="210" cy="340" r="44" fill="#d19900" opacity="0.22"/>
+            <text x="210" y="333" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#d19900">④</text>
+            <text x="210" y="347" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#d19900">GTM &amp;</text>
+            <text x="210" y="360" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#d19900">Objectives</text>
+          </g>
+
+          <!-- ⑤ STP (top left) -->
+          <g class="node-circle" onclick="scrollToCluster('cluster-5')">
+            <circle cx="136" cy="170" r="52" fill="#7a39bb" opacity="0.15"/>
+            <circle cx="136" cy="170" r="44" fill="#7a39bb" opacity="0.22"/>
+            <text x="136" y="163" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#7a39bb">⑤</text>
+            <text x="136" y="177" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#7a39bb">STP</text>
+            <text x="136" y="190" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#7a39bb">Framework</text>
+          </g>
+
+          <!-- ⑥ Strategy & Exec (centre) -->
+          <g class="node-circle" onclick="scrollToCluster('cluster-6')">
+            <circle cx="350" cy="215" r="52" fill="#a12c7b" opacity="0.15"/>
+            <circle cx="350" cy="215" r="44" fill="#a12c7b" opacity="0.22"/>
+            <text x="350" y="208" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#a12c7b">⑥</text>
+            <text x="350" y="222" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#a12c7b">Strategy &amp;</text>
+            <text x="350" y="235" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#a12c7b">Execution</text>
+          </g>
+
+          <!-- OUTER LOOP ARROWS (dashed) -->
+          <!-- 1 → 2 -->
+          <path d="M398,80 Q500,100 520,128" fill="none" stroke="#437a22" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#arrow)" opacity="0.6"/>
+          <!-- 2 → 3 -->
+          <path d="M556,214 Q570,280 535,300" fill="none" stroke="#006494" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#arrow)" opacity="0.6"/>
+          <!-- 3 → 4 -->
+          <path d="M444,348 Q350,375 258,348" fill="none" stroke="#964219" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#arrow)" opacity="0.6"/>
+          <!-- 4 → 5 -->
+          <path d="M166,302 Q130,255 134,215" fill="none" stroke="#d19900" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#arrow)" opacity="0.6"/>
+          <!-- 5 → 1 -->
+          <path d="M182,140 Q250,80 302,68" fill="none" stroke="#7a39bb" stroke-width="1.6" stroke-dasharray="5,4" marker-end="url(#arrow)" opacity="0.6"/>
+          <!-- Feedback loop: 6 → 1 -->
+          <path d="M350,171 L350,108" fill="none" stroke="#a12c7b" stroke-width="1.4" stroke-dasharray="3,3" marker-end="url(#arrow)" opacity="0.5"/>
+
+          <!-- KPI connectors (gold, thin) -->
+          <line x1="350" y1="215" x2="564" y2="170" stroke="#d19900" stroke-width="1" stroke-dasharray="3,3" opacity="0.35"/>
+          <line x1="350" y1="215" x2="490" y2="340" stroke="#d19900" stroke-width="1" stroke-dasharray="3,3" opacity="0.35"/>
+          <line x1="350" y1="215" x2="210" y2="340" stroke="#d19900" stroke-width="1" stroke-dasharray="3,3" opacity="0.35"/>
+          <line x1="350" y1="215" x2="136" y2="170" stroke="#d19900" stroke-width="1" stroke-dasharray="3,3" opacity="0.35"/>
+
+          <!-- KPI labels -->
+          <text x="460" y="185" font-family="DM Sans,sans-serif" font-size="8.5" fill="#d19900" opacity="0.85">CLV · CAC</text>
+          <text x="428" y="300" font-family="DM Sans,sans-serif" font-size="8.5" fill="#964219" opacity="0.85">Market Share</text>
+          <text x="195" y="295" font-family="DM Sans,sans-serif" font-size="8.5" fill="#d19900" opacity="0.85">Mkt Growth</text>
+          <text x="155" y="215" font-family="DM Sans,sans-serif" font-size="8.5" fill="#7a39bb" opacity="0.85">Priority Matrix</text>
+          <text x="306" y="130" font-family="DM Sans,sans-serif" font-size="8.5" fill="#a12c7b" opacity="0.85">Audit Loop</text>
+        </svg>
+      </div>
+      <!-- Legend -->
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:var(--color-c1)"></div>Market Intelligence</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--color-c2)"></div>Customer &amp; Value</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--color-c3)"></div>Strategic Environment</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--color-c4)"></div>GTM &amp; Objectives</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--color-c5)"></div>STP Framework</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--color-c6)"></div>Strategy &amp; Execution</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--color-c4)"></div>KPI connectors (gold)</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Marketing Strategies in a Digital Environment · KLO Diary · Interactive Reference</p>
+</footer>
+
+<script>
+// ===================== DATA =====================
+const clusters = [
+  {
+    id: "cluster-1",
+    number: "01",
+    icon: "📊",
+    tag: "Cluster 1",
+    title: "Market Intelligence",
+    desc: "Defining the playing field: who buys, how big, how much, and where you stand.",
+    color: "var(--color-c1)",
+    bg: "var(--color-c1-bg)",
+    klos: [
+      { name: "Market Definition", def: "Specifying the boundaries of the market you compete in — by need, geography, customer type, or occasion. Too narrow cuts opportunity; too broad dilutes focus.", kpi: "TAM/SAM", links: ["Too Narrow Too Broad", "Market Sizing"] },
+      { name: "Product or JTBD", def: "Jobs-to-be-Done reframes what a product 'does': customers hire it to accomplish a job. Shifts strategy from features to outcomes.", kpi: "Adoption Rate", links: ["Product Demand", "Market Definition"] },
+      { name: "Too Narrow / Too Broad", def: "The scope risk: a market defined too narrowly misses adjacent growth; too broadly, it dilutes resources. Right-sizing is the first strategic decision.", kpi: "Market Scope", links: ["Market Definition", "Market Sizing"] },
+      { name: "Market Sizing", def: "Quantifying TAM (Total Addressable Market), SAM (Serviceable Available Market), and TOM (Target Obtainable Market). Grounds investment cases in reality.", kpi: "TAM · SAM · TOM", links: ["Potential Market", "Available Market", "Target Market"] },
+      { name: "Potential Market", def: "All buyers who could conceivably want the product. The theoretical ceiling of demand.", kpi: "TAM", links: ["Market Sizing", "Available Market"] },
+      { name: "Available Market", def: "Subset of the potential market that has interest, income, and access. The realistic addressable pool.", kpi: "SAM", links: ["Potential Market", "Target Market"] },
+      { name: "Target Market", def: "The specific segment the firm chooses to pursue, balancing size, growth, fit, and competition.", kpi: "TOM", links: ["Available Market", "Targeting"] },
+      { name: "Market Forecast", def: "Forward-looking estimate of market size and growth. Combines quantitative models (trend extrapolation) with qualitative signals (expert opinion).", kpi: "CAGR", links: ["Market Demand", "Market Growth"] },
+      { name: "Market Demand", def: "Total volume of product bought by a defined customer group in a defined area and period under a given marketing program.", kpi: "Volume · Revenue", links: ["Product Demand", "Market Forecast"] },
+      { name: "Product Demand", def: "Demand specific to a firm's product, distinct from category demand. Measured through sales velocity and elasticity.", kpi: "Units Sold · Elasticity", links: ["Market Demand", "Product Penetration"] },
+      { name: "Market Share", def: "Percentage of total market sales captured by the firm. Key signal of competitive position.", kpi: "Mkt Share %", links: ["Relative Market Share", "Market Penetration"] },
+      { name: "Relative Market Share", def: "Firm's share divided by the largest competitor's share. Used in BCG Matrix to assess competitive strength.", kpi: "RMS Ratio", links: ["Market Share", "BCG Matrix"] },
+      { name: "Market Penetration", def: "Percentage of potential customers who have purchased at least once. Growth lever: raise usage among existing buyers.", kpi: "Penetration Rate %", links: ["Product Penetration", "Market Share"] },
+      { name: "Product Penetration", def: "Depth of adoption within a target segment. Differs from market penetration by focusing on specific product lines.", kpi: "SKU Penetration", links: ["Market Penetration", "Numeric Distribution"] },
+      { name: "Numeric Distribution", def: "% of outlets carrying the product. Measures physical availability breadth.", kpi: "Numeric Dist. %", links: ["Weighted Distribution", "Sell In vs Sell Out"] },
+      { name: "Weighted Distribution", def: "% of total category sales in outlets stocking the product. A quality measure — being in the right shops, not just any shops.", kpi: "Weighted Dist. %", links: ["Numeric Distribution", "Market Share"] },
+      { name: "Sell In vs Sell Out", def: "Sell-in: what manufacturers sell to retailers. Sell-out: what retailers sell to end consumers. The gap reveals channel stock build-up risks.", kpi: "Sell-Out / Sell-In Ratio", links: ["Numeric Distribution", "Market Demand"] },
+      { name: "Market Concentration", def: "Degree to which a small number of players dominate the market. Measured by HHI or CR4.", kpi: "HHI · CR4", links: ["Market Share", "Porter 5 Forces"] },
+      { name: "Return on Sales (RoS)", def: "Operating profit as a % of revenue. Measures operational efficiency.", kpi: "RoS %", links: ["Return on Marketing", "Value Based Pricing"] },
+      { name: "Return on Marketing", def: "Revenue or profit generated per unit of marketing spend. Links marketing activity to financial outcomes.", kpi: "ROMI", links: ["Return on Sales", "CAC", "CLV"] },
+      { name: "Sale Force Effectiveness", def: "Productivity and conversion quality of the sales team. Measured by revenue per rep, win rate, quota attainment.", kpi: "Revenue/Rep · Win Rate", links: ["Sell In vs Sell Out", "Market Share"] },
+      { name: "Comparative Pricing Index", def: "Ratio of the firm's price to the average market price. Values >1 signal a premium; <1 a value position.", kpi: "Price Index", links: ["Value Based Pricing", "Perceived Value"] }
+    ]
+  },
+  {
+    id: "cluster-2",
+    number: "02",
+    icon: "💡",
+    tag: "Cluster 2",
+    title: "Customer & Value Analysis",
+    desc: "Understanding what customers are worth, why they buy, and how to price accordingly.",
+    color: "var(--color-c2)",
+    bg: "var(--color-c2-bg)",
+    klos: [
+      { name: "CAC", def: "Customer Acquisition Cost: total sales & marketing spend divided by new customers acquired. The cost of bringing one new buyer in.", kpi: "CAC = Spend / New Customers", links: ["CLV", "Return on Marketing"] },
+      { name: "CLV", def: "Customer Lifetime Value: net present value of future cash flows from a customer. Defines the upper bound of acquisition spend.", kpi: "CLV = (Margin × Retention) / Churn", links: ["CAC", "CLSV", "Segmentation"] },
+      { name: "CLSV", def: "Customer Lifetime Social Value: extends CLV to include referral and advocacy effects. Critical for viral products.", kpi: "CLSV = CLV + Referral Value", links: ["CLV", "Market Growth"] },
+      { name: "Perceived Value", def: "What the customer believes the product is worth relative to alternatives. The ceiling for value-based pricing.", kpi: "WTP (Willingness to Pay)", links: ["Value Based Pricing", "USP Vs POD"] },
+      { name: "Product-Market Fit", def: "The degree to which a product satisfies strong market demand. Often described as the moment when pull exceeds push.", kpi: "NPS · Retention · 40% Test", links: ["MVP", "Market Demand", "Market Opportunity"] },
+      { name: "MVP", def: "Minimum Viable Product: the smallest version of a product that delivers enough value to learn and iterate. Reduces build risk.", kpi: "Learning Velocity", links: ["Product-Market Fit", "Cannibalization"] },
+      { name: "Value Based Pricing", def: "Setting price based on the customer's perceived value rather than cost-plus. Maximises margin at the value frontier.", kpi: "Price Premium %", links: ["Perceived Value", "Comparative Pricing Index"] },
+      { name: "Push vs Pull Demand", def: "Push: supply-driven, moving inventory through channels. Pull: demand-driven, consumers request the product. Digital amplifies pull via search & content.", kpi: "Push/Pull Mix", links: ["Market Demand", "Tapped vs Untapped Market"] },
+      { name: "Tapped vs Untapped Market", def: "Tapped: already served by competitors. Untapped: latent or undiscovered demand. Innovation targets untapped; efficiency improvements target tapped.", kpi: "White-Space Index", links: ["Market Opportunity", "Market Sizing"] }
+    ]
+  },
+  {
+    id: "cluster-3",
+    number: "03",
+    icon: "🔭",
+    tag: "Cluster 3",
+    title: "Strategic Environment",
+    desc: "Scanning the macro context and competitive forces to identify threats and opportunities.",
+    color: "var(--color-c3)",
+    bg: "var(--color-c3-bg)",
+    klos: [
+      { name: "5C Model", def: "Company, Customers, Competitors, Collaborators, Context. A comprehensive situational audit that feeds strategic decisions.", kpi: "SWOT Score", links: ["PESTEL", "Porter 5 Forces"] },
+      { name: "Product Portfolio Analysis", def: "Evaluating all products across dimensions of market share and market growth to allocate resources optimally.", kpi: "Portfolio Balance Score", links: ["BCG Matrix", "Product Life Cycle"] },
+      { name: "BCG Matrix", def: "Stars (high share, high growth), Cash Cows (high share, low growth), Question Marks, Dogs. Guides portfolio investment decisions.", kpi: "Relative Market Share · Mkt Growth", links: ["Product Portfolio Analysis", "Relative Market Share"] },
+      { name: "Product Life Cycle", def: "Introduction → Growth → Maturity → Decline. Each stage demands different strategies for pricing, distribution, and communication.", kpi: "Revenue by Stage", links: ["BCG Matrix", "Cannibalization"] },
+      { name: "Cannibalization", def: "When a new product erodes the sales of an existing product within the same company. Must be managed, not avoided.", kpi: "Cannibalization Rate %", links: ["Product Life Cycle", "Product Portfolio Analysis"] },
+      { name: "PESTEL", def: "Political, Economic, Social, Technological, Environmental, Legal scan. Identifies macro forces that cannot be controlled but must be navigated.", kpi: "Risk Score", links: ["5C Model", "Porter 5 Forces"] },
+      { name: "Porter 5 Forces", def: "Rivalry, Threat of entry, Buyer power, Supplier power, Substitutes. Maps structural attractiveness and profit potential of an industry.", kpi: "Industry Attractiveness Score", links: ["PESTEL", "Market Concentration"] },
+      { name: "Market Opportunity", def: "A gap between unmet customer need and current offerings. The intersection of market size, customer problem severity, and competitive white space.", kpi: "Opportunity Score", links: ["Tapped vs Untapped Market", "Product-Market Fit"] }
+    ]
+  },
+  {
+    id: "cluster-4",
+    number: "04",
+    icon: "🎯",
+    tag: "Cluster 4",
+    title: "GTM & Objectives",
+    desc: "Setting measurable goals and building coherent go-to-market plans that translate strategy into action.",
+    color: "var(--color-c4)",
+    bg: "var(--color-c4-bg)",
+    klos: [
+      { name: "Setting Objectives", def: "SMART goals that bridge ambition and measurement. Objectives cascade from corporate to team to individual KPIs.", kpi: "OKR Completion Rate", links: ["Coherence and Consistency", "Market Growth"] },
+      { name: "Coherence and Consistency", def: "All marketing mix decisions must tell the same story. Incoherence erodes brand trust and confuses buyers.", kpi: "Brand Consistency Score", links: ["Setting Objectives", "Positioning Statement"] },
+      { name: "Market Growth", def: "Rate at which total market revenues expand. Distinguishes growing volume from share-stealing competitive dynamics.", kpi: "Market CAGR %", links: ["Market Share Growth", "Market Forecast"] },
+      { name: "Market Share Growth", def: "Increasing your slice of a given market — distinguishable from riding overall market growth. The tougher and more strategic achievement.", kpi: "Δ Market Share", links: ["Market Growth", "Market Share"] },
+      { name: "Stakeholder Analysis", def: "Mapping all parties with a stake in the firm's actions by interest and power. Informs communication and governance strategy.", kpi: "Stakeholder Alignment Score", links: ["Setting Objectives", "Analysis–Audit–Strategy–Execution"] }
+    ]
+  },
+  {
+    id: "cluster-5",
+    number: "05",
+    icon: "🧩",
+    tag: "Cluster 5",
+    title: "STP Framework",
+    desc: "The core strategic triad: Segmentation → Targeting → Positioning. Aligns your offer with the right customer.",
+    color: "var(--color-c5)",
+    bg: "var(--color-c5-bg)",
+    klos: [
+      { name: "Segmentation", def: "Dividing the market into groups with similar needs, behaviours, or characteristics. The foundation of focused marketing.", kpi: "Segment Size · Growth · Fit", links: ["MIDAS", "Targeting", "WHO–WHAT–HOW"] },
+      { name: "MIDAS", def: "Measurable, Identifiable, Differentiable, Accessible, Substantial. The five criteria for a viable market segment.", kpi: "MIDAS Score", links: ["Segmentation", "Criteria for Targeting"] },
+      { name: "Qualitative vs Quantitative", def: "Segmentation uses both: surveys/analytics for size (quant) and interviews/ethnography for motivation (qual). Neither alone is sufficient.", kpi: "Qual + Quant Mix", links: ["Segmentation", "WHO–WHAT–HOW"] },
+      { name: "WHO–WHAT–HOW", def: "The strategic question scaffold: WHO are we serving? WHAT do they need? HOW do we deliver it? Keeps strategy grounded in customer reality.", kpi: "Strategy Clarity Score", links: ["Segmentation", "Targeting"] },
+      { name: "Why Strategic", def: "Segmentation is strategic — not operational — because it determines resource allocation, product design, and positioning before any campaign is run.", kpi: "Strategic Alignment", links: ["Segmentation", "Priority Matrix"] },
+      { name: "Segments are Dynamic", def: "Segments shift with technology, culture, and economics. Regular re-segmentation prevents strategic obsolescence.", kpi: "Segment Refresh Frequency", links: ["Segmentation", "Market Forecast"] },
+      { name: "Targeting", def: "Choosing which segments to serve given resources and fit. Three strategies: undifferentiated, differentiated, concentrated/niche.", kpi: "Segment Share", links: ["Segmentation", "Strategies of Targeting"] },
+      { name: "Why We Target", def: "Targeting prevents spreading resources too thin. Focus creates depth of value rather than breadth of mediocrity.", kpi: "Resource Efficiency Ratio", links: ["Targeting", "Priority Matrix"] },
+      { name: "Criteria for Targeting", def: "Segment size, growth, profitability, structural attractiveness, company objectives, and MIDAS criteria.", kpi: "Targeting Score", links: ["MIDAS", "Targeting"] },
+      { name: "Strategies of Targeting", def: "Undifferentiated (one offer, all), Differentiated (multiple offers, multiple segments), Concentrated (one offer, one segment), Micro-targeting.", kpi: "Targeting Efficiency", links: ["Targeting", "Criteria for Targeting"] },
+      { name: "Priority Matrix", def: "Plots segments on axes of attractiveness and competitive strength. Guides go/no-go targeting decisions.", kpi: "Segment Rank", links: ["Targeting", "BCG Matrix"] },
+      { name: "Positioning", def: "Creating a distinct place in the customer's mind relative to competitors. The synthesis of segmentation and targeting.", kpi: "Perceptual Map Score", links: ["USP Vs POD", "Positioning Statement"] },
+      { name: "USP Vs POD", def: "Unique Selling Proposition = what only you offer. Point of Difference = what makes you better. PODs can be functional or emotional.", kpi: "Brand Differentiation Index", links: ["Positioning", "Brand Pyramid and Values"] },
+      { name: "Brand Pyramid and Values", def: "Hierarchy from product attributes → benefits → values → personality → essence. Guides consistent communication from features to meaning.", kpi: "Brand Equity Score", links: ["USP Vs POD", "Positioning Statement"] },
+      { name: "Positioning Statement", def: "For [target], [brand] is the [category] that [point of difference] because [reason to believe].", kpi: "Clarity Score", links: ["Positioning", "Coherence and Consistency"] },
+      { name: "Positioning Maps", def: "Perceptual maps plot brands on two dimensions to visualise competitive space. Reveal gaps and threats.", kpi: "Perceptual Gap", links: ["Positioning Statement", "Competitive Advantage"] },
+      { name: "Pitfalls of Positioning", def: "Underpositioning (no clear claim), overpositioning (too narrow), confused positioning (conflicting claims), irrelevant positioning.", kpi: "Positioning Error Index", links: ["Positioning", "Checklist of Good Positioning"] },
+      { name: "Checklist of Good Positioning", def: "Is it ownable? Believable? Relevant? Deliverable? Distinctive? Sustainable? Run every positioning statement through this test.", kpi: "Positioning Quality Score", links: ["Positioning Statement", "Pitfalls of Positioning"] },
+      { name: "Competitive Advantage & Positioning", def: "Positioning must be anchored in a genuine, sustainable advantage — otherwise it's marketing noise, not strategy.", kpi: "Sustainable CA Score", links: ["Competitive Advantage", "USP Vs POD"] }
+    ]
+  },
+  {
+    id: "cluster-6",
+    number: "06",
+    icon: "⚙️",
+    tag: "Cluster 6",
+    title: "Strategy & Execution",
+    desc: "Closing the loop: competitive advantage, the audit cycle, and connecting all dots back to market intelligence.",
+    color: "var(--color-c6)",
+    bg: "var(--color-c6-bg)",
+    klos: [
+      { name: "Competitive Advantage", def: "A sustainable edge that lets a firm outperform rivals. Can be cost-based, differentiation-based, or focus-based (Porter).", kpi: "CA Durability Score", links: ["Positioning", "Analysis–Audit–Strategy–Execution"] },
+      { name: "Analysis–Audit–Strategy–Execution", def: "The four-stage loop: (1) Analyse context, (2) Audit current state, (3) Define strategy, (4) Execute & measure. Then loop back.", kpi: "Strategy Cycle Completion", links: ["5C Model", "Setting Objectives", "Market Intelligence"] }
+    ]
+  }
+];
+
+// ===================== RENDER CLUSTERS =====================
+function renderClusters(filterText = "") {
+  const container = document.getElementById("clusters-container");
+  container.innerHTML = "";
+  const query = filterText.toLowerCase().trim();
+  let totalVisible = 0;
+
+  clusters.forEach(c => {
+    const section = document.createElement("section");
+    section.className = "cluster-section";
+    section.id = c.id;
+
+    const filteredKlos = c.klos.filter(k =>
+      !query || k.name.toLowerCase().includes(query) || k.def.toLowerCase().includes(query) ||
+      (k.links && k.links.some(l => l.toLowerCase().includes(query)))
+    );
+
+    if (query && filteredKlos.length === 0) {
+      section.style.display = "none";
+      container.appendChild(section);
+      return;
+    }
+    totalVisible += filteredKlos.length;
+
+    const clusterHeaderHTML = `
+      <div class="cluster-header">
+        <div class="cluster-icon" style="background:${c.bg}; color:${c.color}">${c.icon}</div>
+        <div class="cluster-meta">
+          <div class="cluster-tag" style="color:${c.color}">${c.tag} — ${c.number}</div>
+          <h2 class="cluster-title" style="color:var(--color-text)">${c.title}</h2>
+          <p class="cluster-desc">${c.desc}</p>
+        </div>
+      </div>`;
+
+    const kloGridItems = (query ? filteredKlos : c.klos).map(k => {
+      const nameDisplay = query ? highlightText(k.name, query) : k.name;
+      const linksHTML = k.links && k.links.length > 0 ? `
+        <div class="links-list">
+          <div class="links-list-title">Linked KLOs</div>
+          <ul>${k.links.map(l => `<li><span class="link-tag">${l}</span></li>`).join("")}</ul>
+        </div>` : "";
+      return `
+        <div class="klo-card" tabindex="0" role="button" aria-expanded="false">
+          <div class="klo-card-top">
+            <span class="klo-name">${nameDisplay}</span>
+            <svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </div>
+          <div class="klo-body">
+            <div class="klo-body-inner">
+              <p>${k.def}</p>
+              ${k.kpi ? `<span class="kpi-badge" style="background:${c.bg};color:${c.color}">KPI: ${k.kpi}</span>` : ""}
+              ${linksHTML}
+            </div>
+          </div>
+        </div>`;
+    }).join("");
+
+    section.innerHTML = clusterHeaderHTML + `<div class="klo-grid">${kloGridItems}</div>`;
+    container.appendChild(section);
+  });
+
+  // Re-attach card click events
+  document.querySelectorAll(".klo-card").forEach(card => {
+    const toggle = () => {
+      const expanded = card.classList.toggle("expanded");
+      card.setAttribute("aria-expanded", expanded);
+    };
+    card.addEventListener("click", toggle);
+    card.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); }});
+  });
+
+  // Update search count
+  const countEl = document.getElementById("search-count");
+  if (query) {
+    countEl.textContent = `${totalVisible} concept${totalVisible !== 1 ? "s" : ""} match "${filterText}"`;
+  } else {
+    countEl.textContent = "";
+  }
+}
+
+function highlightText(text, query) {
+  const idx = text.toLowerCase().indexOf(query);
+  if (idx === -1) return text;
+  return text.slice(0, idx) + `<mark class="highlight">${text.slice(idx, idx + query.length)}</mark>` + text.slice(idx + query.length);
+}
+
+// ===================== HERO PILLS =====================
+function renderHeroPills() {
+  const container = document.getElementById("hero-cluster-pills");
+  clusters.forEach(c => {
+    const btn = document.createElement("a");
+    btn.className = "cluster-pill";
+    btn.href = `#${c.id}`;
+    btn.style.background = c.bg;
+    btn.style.color = c.color;
+    btn.style.borderColor = `color-mix(in oklab, ${c.color} 30%, transparent)`;
+    btn.innerHTML = `<span class="dot" style="background:${c.color}"></span>${c.icon} ${c.title}`;
+    container.appendChild(btn);
+  });
+}
+
+// ===================== CONCEPT MAP NAV =====================
+function scrollToCluster(id) {
+  const el = document.getElementById(id);
+  if (el) { el.scrollIntoView({ behavior: "smooth", block: "start" }); }
+}
+
+// ===================== SEARCH =====================
+const searchInput = document.getElementById("klo-search");
+let debounceTimer;
+searchInput.addEventListener("input", () => {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(() => renderClusters(searchInput.value), 200);
+});
+
+// ===================== THEME TOGGLE =====================
+(function(){
+  const t = document.querySelector("[data-theme-toggle]");
+  const r = document.documentElement;
+  let d = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  r.setAttribute("data-theme", d);
+  const sunSVG = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>`;
+  const moonSVG = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+  if (t) {
+    t.innerHTML = d === "dark" ? sunSVG : moonSVG;
+    t.addEventListener("click", () => {
+      d = d === "dark" ? "light" : "dark";
+      r.setAttribute("data-theme", d);
+      t.innerHTML = d === "dark" ? sunSVG : moonSVG;
+      t.setAttribute("aria-label", "Switch to " + (d === "dark" ? "light" : "dark") + " mode");
+    });
+  }
+})();
+
+// ===================== INIT =====================
+renderHeroPills();
+renderClusters();
+</script>
+</body>
+</html>
