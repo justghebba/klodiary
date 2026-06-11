@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marketing Strategies – KLO Diary</title>
+<title>3Gees – KLOs Presentation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300..700&display=swap" rel="stylesheet">
@@ -80,7 +80,6 @@
   --shadow-md: 0 4px 14px oklch(0 0 0 / 0.4);
   --shadow-lg: 0 12px 36px oklch(0 0 0 / 0.5);
 }
-
 
 /* ===================== BASE ===================== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -412,27 +411,31 @@ p, li { text-wrap: pretty; }
 <!-- HEADER -->
 <header class="site-header">
   <div class="logo-wrap">
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-label="Marketing Strategies KLO">
-      <circle cx="16" cy="16" r="14" fill="var(--color-primary)" opacity="0.15"/>
-      <circle cx="16" cy="16" r="9" stroke="var(--color-primary)" stroke-width="1.5" fill="none"/>
-      <circle cx="16" cy="7" r="3" fill="var(--color-primary)"/>
-      <circle cx="25" cy="22" r="3" fill="var(--color-c5)"/>
-      <circle cx="7" cy="22" r="3" fill="var(--color-c3)"/>
-      <line x1="16" y1="10" x2="23" y2="20" stroke="var(--color-text-faint)" stroke-width="1"/>
-      <line x1="16" y1="10" x2="9" y2="20" stroke="var(--color-text-faint)" stroke-width="1"/>
-      <line x1="22" y1="22" x2="10" y2="22" stroke="var(--color-text-faint)" stroke-width="1"/>
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="3Gees logo">
+      <!-- Three overlapping G letters forming a trefoil -->
+      <!-- G top-center -->
+      <circle cx="18" cy="11" r="7" stroke="var(--color-primary)" stroke-width="2" fill="none"/>
+      <path d="M25 11 H20 V13 H23 A5 5 0 0 1 18 16" stroke="var(--color-primary)" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- G bottom-left -->
+      <circle cx="11" cy="23" r="7" stroke="var(--color-c5)" stroke-width="2" fill="none"/>
+      <path d="M18 23 H13 V25 H16 A5 5 0 0 1 11 28" stroke="var(--color-c5)" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- G bottom-right -->
+      <circle cx="25" cy="23" r="7" stroke="var(--color-c3)" stroke-width="2" fill="none"/>
+      <path d="M32 23 H27 V25 H30 A5 5 0 0 1 25 28" stroke="var(--color-c3)" stroke-width="2" fill="none" stroke-linecap="round"/>
     </svg>
-    <span class="logo-text">KLO<span> Diary</span></span>
+    <span class="logo-text">3Gees<span> KLOs</span></span>
   </div>
   <nav class="header-nav" aria-label="Clusters">
     <div class="pill-nav">
-      <a href="#cluster-1">Market Intel</a>
-      <a href="#cluster-2">Customer</a>
-      <a href="#cluster-3">Strategy</a>
-      <a href="#cluster-4">GTM</a>
-      <a href="#cluster-5">STP</a>
-      <a href="#cluster-6">Execution</a>
-      <a href="#cases-section">Cases</a><a href="#concept-map-section">Map</a>
+      <a href="#cases-section">Cases</a>
+      <a href="#klo-section">KLOs</a>
+      <a href="#cluster-1">①</a>
+      <a href="#cluster-2">②</a>
+      <a href="#cluster-3">③</a>
+      <a href="#cluster-4">④</a>
+      <a href="#cluster-5">⑤</a>
+      <a href="#cluster-6">⑥</a>
+      <a href="#crosscase-map-section">Matrix</a>
     </div>
     <button class="theme-btn" data-theme-toggle aria-label="Toggle dark mode">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -443,28 +446,15 @@ p, li { text-wrap: pretty; }
 <!-- HERO -->
 <section class="hero">
   <p class="hero-eyebrow">Marketing Strategies in a Digital Environment</p>
-  <h1>Key Learning Outcome Diary</h1>
-  <p class="hero-sub">65 concepts organised into 6 strategic clusters. Click any card to expand its definition, KPIs, and cross-links.</p>
+  <h1>3Gees KLOs Presentation</h1>
+  <p class="hero-sub">6 case studies. 65 concepts across 6 strategic clusters. A synthesis map connecting them all.</p>
   <div class="hero-clusters" id="hero-cluster-pills"></div>
 </section>
 
 <!-- MAIN -->
 <main class="main-wrap" id="main">
 
-  <!-- SEARCH -->
-  <div class="search-wrap">
-    <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <input type="search" class="search-input" id="klo-search" placeholder="Search concepts, e.g. CAC, segmentation…" aria-label="Search KLOs">
-  </div>
-  <p class="search-count" id="search-count"></p>
-
-  <!-- CLUSTERS RENDERED BY JS -->
-  <div id="clusters-container"></div>
-
-
-  <div class="section-divider"></div>
-
-  <!-- CASES SECTION -->
+    <!-- CASES SECTION -->
   <section id="cases-section">
     <div class="section-header-block">
       <p class="hero-eyebrow" style="text-align:left;margin-bottom:var(--space-2)">Applied Learning</p>
@@ -476,7 +466,28 @@ p, li { text-wrap: pretty; }
 
   <div class="section-divider"></div>
 
-  <!-- CROSS-CASE SVG MAP -->
+  <!-- KLO CLUSTERS SECTION -->
+  <section id="klo-section">
+    <div class="section-header-block">
+      <p class="hero-eyebrow" style="text-align:left;margin-bottom:var(--space-2)">Frameworks & Concepts</p>
+      <h2 class="section-main-title">All 65 KLOs</h2>
+      <p class="section-sub-wide">Every key learning outcome from the course, organised into 6 strategic clusters. Click any card to expand its definition, KPIs, and cross-links.</p>
+    </div>
+    <!-- SEARCH -->
+  <div class="search-wrap">
+    <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="search" class="search-input" id="klo-search" placeholder="Search concepts, e.g. CAC, segmentation…" aria-label="Search KLOs">
+  </div>
+  <p class="search-count" id="search-count"></p>
+
+  <!-- CLUSTERS RENDERED BY JS -->
+  <div id="clusters-container"></div>
+
+  </section>
+
+  <div class="section-divider"></div>
+
+    <!-- CROSS-CASE SVG MAP -->
   <section id="crosscase-map-section">
     <div class="section-header-block">
       <p class="hero-eyebrow" style="text-align:left;margin-bottom:var(--space-2)">Synthesis</p>
