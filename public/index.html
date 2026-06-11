@@ -6,13 +6,25 @@
 <title>3Gees – KLOs Presentation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300..700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <style>
 /* ===================== TOKENS ===================== */
+h1, h2, h3, .case-title, .cluster-title, .klo-name, .section-main-title {
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.hero-eyebrow, .case-eyebrow, .case-col-title {
+  letter-spacing: 0.12em;
+}
+.nav-logo .logo-text, .pill-nav a {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 :root, [data-theme="light"] {
   --color-bg: #f7f6f2;
   --color-surface: #f9f8f5;
@@ -47,9 +59,8 @@
   --radius-lg: 0.75rem;
   --radius-xl: 1.25rem;
   --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
-  --font-family: 'Share Tech', sans-serif;
-  --font-sans: 'Share Tech', sans-serif;
-  --font-display: 'Share Tech', sans-serif;
+  --font-sans: 'Share Tech', monospace;
+  --font-display: 'Share Tech', monospace;
   --font-mono: 'Share Tech', monospace;
   --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
   --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
@@ -417,18 +428,29 @@ p, li { text-wrap: pretty; }
 <!-- HEADER -->
 <header class="site-header">
   <div class="logo-wrap">
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="3Gees logo">
-      <!-- Three overlapping G letters forming a trefoil -->
-      <!-- G top-center -->
-      <circle cx="18" cy="11" r="7" stroke="var(--color-primary)" stroke-width="2" fill="none"/>
-      <path d="M25 11 H20 V13 H23 A5 5 0 0 1 18 16" stroke="var(--color-primary)" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <!-- G bottom-left -->
-      <circle cx="11" cy="23" r="7" stroke="var(--color-c5)" stroke-width="2" fill="none"/>
-      <path d="M18 23 H13 V25 H16 A5 5 0 0 1 11 28" stroke="var(--color-c5)" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <!-- G bottom-right -->
-      <circle cx="25" cy="23" r="7" stroke="var(--color-c3)" stroke-width="2" fill="none"/>
-      <path d="M32 23 H27 V25 H30 A5 5 0 0 1 25 28" stroke="var(--color-c3)" stroke-width="2" fill="none" stroke-linecap="round"/>
-    </svg>
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 595.28 595.28" style="height:40px;width:40px;display:block;" aria-label="3Gees logo">
+<style>.st2{fill:#F9B233;}.st3{fill:#3AAA35;}.st4{fill:#951B81;}</style>
+<g>
+  <g>
+    <path class="st2" d="M357.88,310.89c-10.86-9.16-30.91-28.06-46.54-55.07c-17.52-30.27-24.24-59.66-16.88-90.07
+      c6.66-26.83,27.18-52.98,58.34-71.02c59.82-34.24,127.15-18.54,165.98,48.53c13.4,23.15,18.83,44.17,19.66,55.18l-24.68,5.96
+      c-1.44-13.43-5.31-29.02-17-49.2c-28.18-48.67-76.83-62.9-126.98-33.86c-50.75,29.38-63.02,77.3-36.05,123.89
+      c9.79,16.91,18.87,27.11,25.27,31.33l59.65-34.53l-23.54-40.65l20.77-12.03l38.14,65.88L357.88,310.89z"/>
+  </g>
+  <g>
+    <path class="st3" d="M235.91,289.66c13.73-3.67,40.7-9.32,71.79-6.72c34.85,2.93,62.81,14.21,83.56,37.63
+      c18.22,20.8,27.94,52.58,24.93,88.46c-6.1,68.66-57.46,114.93-134.69,108.46c-26.65-2.23-47.01-9.79-56.52-15.4l9.21-23.66
+      c11.84,6.5,26.85,12.23,50.08,14.18c56.04,4.7,95.52-27.09,100.37-84.84c4.9-58.43-27.41-95.9-81.05-100.39
+      c-19.48-1.64-33.03-0.02-40.15,2.83l-5.76,68.68l46.81,3.92l-2,23.92l-75.86-6.36L235.91,289.66z"/>
+  </g>
+  <g>
+    <path class="st4" d="M302.93,199.32c-4.1,13.61-13.49,39.51-32.07,64.58c-20.82,28.1-45.13,45.94-75.97,51.26
+      c-27.27,4.55-59.41-3.91-88.34-25.34c-55.17-41.31-67.5-109.34-21.36-171.6c15.92-21.49,33.06-34.83,42.84-39.96l15.28,20.28
+      c-11.76,6.65-24.53,16.4-38.41,35.13c-33.48,45.18-27.22,95.49,19.34,129.99c47.11,34.91,95.97,27.15,128.02-16.1
+      c11.64-15.7,17.39-28.08,18.72-35.63l-55.38-41.03l-27.97,37.74l-19.28-14.29l45.32-61.16L302.93,199.32z"/>
+  </g>
+</g>
+</svg>
     <span class="logo-text">3Gees<span> KLOs</span></span>
   </div>
   <nav class="header-nav" aria-label="Clusters">
