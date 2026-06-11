@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
@@ -46,15 +47,16 @@
   --radius-lg: 0.75rem;
   --radius-xl: 1.25rem;
   --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
-  --font-sans: 'Montserrat', sans-serif;
-  --font-display: 'Montserrat', sans-serif;
-  --font-mono: 'Montserrat', monospace;
+  --font-family: 'Share Tech', sans-serif;
+  --font-sans: 'Share Tech', sans-serif;
+  --font-display: 'Share Tech', sans-serif;
+  --font-mono: 'Share Tech', monospace;
   --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
   --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
   --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
   --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
   --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
-  --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+  --text-2xl: clamp(6rem, 1.2rem + 2.5vw, 3.5rem);
   --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
   --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem;
   --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem;
@@ -132,7 +134,7 @@ p, li { text-wrap: pretty; }
   background: linear-gradient(in oklab, var(--color-bg) 60%, var(--color-primary-light));
   border-bottom: 1px solid oklch(from var(--color-text) l c h / 0.06);
 }
-.hero-eyebrow { font-family: var(--font-body); font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--space-4); }
+.hero-eyebrow { font-family: var(--font-body); font-size: var(--text-xs); font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--space-4); }
 .hero h1 { font-size: var(--text-2xl); font-style: italic; color: var(--color-text); margin-bottom: var(--space-4); max-width: 18ch; margin-inline: auto; }
 .hero-sub { font-size: var(--text-base); color: var(--color-text-muted); max-width: 52ch; margin-inline: auto; margin-bottom: var(--space-8); }
 .hero-clusters { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-2); }
@@ -449,8 +451,8 @@ p, li { text-wrap: pretty; }
 
 <!-- HERO -->
 <section class="hero">
-  <p class="hero-eyebrow">Marketing Strategies in a Digital Environment</p>
-  <h1>3Gees KLOs Presentation</h1>
+  <p class="hero-eyebrow">3 GEES GROUP</p>
+  <h1>Cases & KLOs Presentation</h1>
   <p class="hero-sub">6 case studies. 65 concepts across 6 strategic clusters. A synthesis map connecting them all.</p>
   <div class="hero-clusters" id="hero-cluster-pills"></div>
 </section>
