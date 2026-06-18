@@ -45,7 +45,7 @@ h1, h2, h3, .case-title, .cluster-title, .klo-name, .section-main-title {
   --color-c2-bg: #e4f0f7;
   --color-c3: #964219; /* Strategic Env – amber */
   --color-c3-bg: #f5ece4;
-  --color-c4: #d19900; /* Go-To-Market – gold */
+  --color-c4: #d19900; /* GTM – gold */
   --color-c4-bg: #faf3d9;
   --color-c5: #7a39bb; /* STP – purple */
   --color-c5-bg: #f0eaf9;
@@ -73,30 +73,7 @@ h1, h2, h3, .case-title, .cluster-title, .klo-name, .section-main-title {
   --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem;
   --space-16: 4rem;
 }
-[data-theme="dark"] {
-  --color-bg: #1a2220;
-  --color-surface: #1f2a28;
-  --color-surface-2: #243030;
-  --color-surface-offset: #283634;
-  --color-divider: #344442;
-  --color-border: #3c4e4c;
-  --color-text: #ccd8d4;
-  --color-text-muted: #748880;
-  --color-text-faint: #4e5e5a;
-  --color-text-inverse: #1a2220;
-  --color-primary: #5cbaa8;
-  --color-primary-hover: #3a9e8c;
-  --color-primary-light: #18332e;
-  --color-c1: #72bc52; --color-c1-bg: #1a2e18;
-  --color-c2: #5aaad4; --color-c2-bg: #162636;
-  --color-c3: #ca7050; --color-c3-bg: #2e1e14;
-  --color-c4: #e4ba38; --color-c4-bg: #2c2614;
-  --color-c5: #b07ae0; --color-c5-bg: #221438;
-  --color-c6: #d268aa; --color-c6-bg: #2c1228;
-  --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.3);
-  --shadow-md: 0 4px 14px oklch(0 0 0 / 0.4);
-  --shadow-lg: 0 12px 36px oklch(0 0 0 / 0.5);
-}
+
 
 /* ===================== BASE ===================== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -127,13 +104,7 @@ p, li { text-wrap: pretty; }
 .logo-text { font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text); letter-spacing: -0.01em; }
 .logo-text span { color: var(--color-primary); }
 .header-nav { display: flex; align-items: center; gap: var(--space-2); }
-.theme-btn {
-  display: flex; align-items: center; justify-content: center;
-  width: 38px; height: 38px; border-radius: var(--radius-full, 9999px);
-  color: var(--color-text-muted);
-  transition: color var(--transition), background var(--transition);
-}
-.theme-btn:hover { background: var(--color-surface-offset); color: var(--color-text); }
+
 .pill-nav { display: flex; gap: var(--space-1); background: var(--color-surface-offset); border-radius: 9999px; padding: var(--space-1); }
 .pill-nav a { font-size: var(--text-sm); font-weight: 500; padding: var(--space-1) var(--space-3); border-radius: 9999px; color: var(--color-text-muted); transition: color var(--transition), background var(--transition); }
 .pill-nav a:hover, .pill-nav a.active { color: var(--color-text); background: var(--color-surface-2); }
@@ -420,59 +391,6 @@ p, li { text-wrap: pretty; }
   margin-left: var(--space-3);
 }
 
-
-/* ── KPI BADGES: all hidden by default ──────────────────────────
-   To show a specific KPI badge, open DevTools or edit the JS clusters
-   data and add  showKpi: true  to that KLO object, or directly remove
-   style="display:none" from the rendered span.
-   Alternatively use: document.querySelectorAll('[data-kpi]') to target.
-──────────────────────────────────────────────────────────────── */
-
-
-/* ── CLUSTER ACCORDION ──────────────────────────────── */
-.cluster-section {
-  border: 1px solid oklch(from var(--color-text) l c h / 0.08);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  margin-bottom: var(--space-6);
-  scroll-margin-top: 5rem;
-}
-.cluster-header {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-  padding: var(--space-5) var(--space-6);
-  cursor: pointer;
-  user-select: none;
-  transition: background var(--transition);
-}
-.cluster-header:hover { background: var(--color-surface-2); }
-.cluster-chevron {
-  margin-left: auto;
-  flex-shrink: 0;
-  width: 28px; height: 28px; border-radius: 50%;
-  background: var(--color-surface-offset);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--color-text-muted);
-  transition: transform var(--transition), background var(--transition);
-}
-.cluster-section.open .cluster-chevron {
-  transform: rotate(180deg);
-  background: var(--color-primary-light);
-  color: var(--color-primary);
-}
-.cluster-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 480ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-.cluster-section.open .cluster-body { max-height: 9000px; }
-.cluster-body-inner {
-  padding: 0 var(--space-6) var(--space-6);
-  border-top: 1px solid oklch(from var(--color-text) l c h / 0.07);
-  padding-top: var(--space-4);
-}
-
 </style>
 </head>
 <body>
@@ -481,18 +399,14 @@ p, li { text-wrap: pretty; }
 <!-- HEADER -->
 <header class="site-header">
   <div class="logo-wrap">
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="3Gees logo">
-      <!-- Three overlapping G letters forming a trefoil -->
-      <!-- G top-center -->
-      <circle cx="18" cy="11" r="7" stroke="var(--color-primary)" stroke-width="2" fill="none"/>
-      <path d="M25 11 H20 V13 H23 A5 5 0 0 1 18 16" stroke="var(--color-primary)" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <!-- G bottom-left -->
-      <circle cx="11" cy="23" r="7" stroke="var(--color-c5)" stroke-width="2" fill="none"/>
-      <path d="M18 23 H13 V25 H16 A5 5 0 0 1 11 28" stroke="var(--color-c5)" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <!-- G bottom-right -->
-      <circle cx="25" cy="23" r="7" stroke="var(--color-c3)" stroke-width="2" fill="none"/>
-      <path d="M32 23 H27 V25 H30 A5 5 0 0 1 25 28" stroke="var(--color-c3)" stroke-width="2" fill="none" stroke-linecap="round"/>
-    </svg>
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 595.28 595.28" style="height:40px;width:40px;display:block;" aria-label="3Gees logo">
+  <style type="text/css">.st2{fill:#F9B233;}.st3{fill:#3AAA35;}.st4{fill:#951B81;}</style>
+  <g>
+    <g><path class="st2" d="M357.88,310.89c-10.86-9.16-30.91-28.06-46.54-55.07c-17.52-30.27-24.24-59.66-16.88-90.07c6.66-26.83,27.18-52.98,58.34-71.02c59.82-34.24,127.15-18.54,165.98,48.53c13.4,23.15,18.83,44.17,19.66,55.18l-24.68,5.96c-1.44-13.43-5.31-29.02-17-49.2c-28.18-48.67-76.83-62.9-126.98-33.86c-50.75,29.38-63.02,77.3-36.05,123.89c9.79,16.91,18.87,27.11,25.27,31.33l59.65-34.53l-23.54-40.65l20.77-12.03l38.14,65.88L357.88,310.89z"/></g>
+    <g><path class="st3" d="M235.91,289.66c13.73-3.67,40.7-9.32,71.79-6.72c34.85,2.93,62.81,14.21,83.56,37.63c18.22,20.8,27.94,52.58,24.93,88.46c-6.1,68.66-57.46,114.93-134.69,108.46c-26.65-2.23-47.01-9.79-56.52-15.4l9.21-23.66c11.84,6.5,26.85,12.23,50.08,14.18c56.04,4.7,95.52-27.09,100.37-84.84c4.9-58.43-27.41-95.9-81.05-100.39c-19.48-1.64-33.03-0.02-40.15,2.83l-5.76,68.68l46.81,3.92l-2,23.92l-75.86-6.36L235.91,289.66z"/></g>
+    <g><path class="st4" d="M302.93,199.32c-4.1,13.61-13.49,39.51-32.07,64.58c-20.82,28.1-45.13,45.94-75.97,51.26c-27.27,4.55-59.41-3.91-88.34-25.34c-55.17-41.31-67.5-109.34-21.36-171.6c15.92-21.49,33.06-34.83,42.84-39.96l15.28,20.28c-11.76,6.65-24.53,16.4-38.41,35.13c-33.48,45.18-27.22,95.49,19.34,129.99c47.11,34.91,95.97,27.15,128.02-16.1c11.64-15.7,17.39-28.08,18.72-35.63l-55.38-41.03l-27.97,37.74l-19.28-14.29l45.32-61.16L302.93,199.32z"/></g>
+  </g>
+</svg>
     <span class="logo-text">3Gees<span> KLOs</span></span>
   </div>
   <nav class="header-nav" aria-label="Clusters">
@@ -507,9 +421,7 @@ p, li { text-wrap: pretty; }
       <a href="#cluster-6">⑥</a>
       <a href="#crosscase-map-section">Matrix</a>
     </div>
-    <button class="theme-btn" data-theme-toggle aria-label="Toggle dark mode">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
+    
   </nav>
 </header>
 
@@ -517,7 +429,7 @@ p, li { text-wrap: pretty; }
 <section class="hero">
   <p class="hero-eyebrow">3 GEES GROUP</p>
   <h1>Cases & KLOs Presentation</h1>
-  <p class="hero-sub">6 case studies. Key concepts across 6 strategic clusters. A synthesis map connecting them all.</p>
+  <p class="hero-sub">6 case studies. 65 concepts across 6 strategic clusters. A synthesis map connecting them all.</p>
   <div class="hero-clusters" id="hero-cluster-pills"></div>
 </section>
 
@@ -529,7 +441,7 @@ p, li { text-wrap: pretty; }
     <div class="section-header-block">
       <p class="hero-eyebrow" style="text-align:left;margin-bottom:var(--space-2)">Applied Learning</p>
       <h2 class="section-main-title">Case Studies</h2>
-      <p class="section-sub-wide">Six real-world situations where frameworks from the KLO clusters were put to work. Each case activates a subset of the concepts — click any tag to jump to its definition.</p>
+      <p class="section-sub-wide">Six real-world situations where frameworks from the KLO clusters were put to work. Each case activates a subset of the 65 concepts — click any tag to jump to its definition.</p>
     </div>
     <div id="cases-container"></div>
   </section>
@@ -540,15 +452,15 @@ p, li { text-wrap: pretty; }
   <section id="klo-section">
     <div class="section-header-block">
       <p class="hero-eyebrow" style="text-align:left;margin-bottom:var(--space-2)">Frameworks & Concepts</p>
-      <h2 class="section-main-title">Key Learning Outcomes</h2>
-      <p class="section-sub-wide">Every key learning outcome from the course, organised into 6 strategic clusters. Click any cluster to expand its concepts.</p>
+      <h2 class="section-main-title">All 65 KLOs</h2>
+      <p class="section-sub-wide">Every key learning outcome from the course, organised into 6 strategic clusters. Click any card to expand its definition, KPIs, and cross-links.</p>
     </div>
     <!-- SEARCH -->
   <div class="search-wrap">
     <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
     <input type="search" class="search-input" id="klo-search" placeholder="Search concepts, e.g. CAC, segmentation…" aria-label="Search KLOs">
   </div>
-  <p class="search-count" id="search-count" style="display:none"></p>
+  <p class="search-count" id="search-count"></p>
 
   <!-- CLUSTERS RENDERED BY JS -->
   <div id="clusters-container"></div>
@@ -583,10 +495,10 @@ p, li { text-wrap: pretty; }
             <rect x="20" y="186" width="160" height="36" rx="8" fill="var(--color-c3-bg)" stroke="var(--color-c3)" stroke-width="1.2"/>
             <text x="100" y="209" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="var(--color-c3)">③ Strategic Env.</text>
           </g>
-          <!-- C4 Go-To-Market -->
+          <!-- C4 GTM -->
           <g onclick="scrollToCluster('cluster-4')" style="cursor:pointer">
             <rect x="20" y="264" width="160" height="36" rx="8" fill="var(--color-c4-bg)" stroke="var(--color-c4)" stroke-width="1.2"/>
-            <text x="100" y="287" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="var(--color-c4)">④ Go-To-Market &amp; Objectives</text>
+            <text x="100" y="287" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="var(--color-c4)">④ GTM &amp; Objectives</text>
           </g>
           <!-- C5 STP -->
           <g onclick="scrollToCluster('cluster-5')" style="cursor:pointer">
@@ -760,12 +672,12 @@ p, li { text-wrap: pretty; }
             <text x="490" y="360" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#964219">Environment</text>
           </g>
 
-          <!-- ④ Go-To-Market (bottom left) -->
+          <!-- ④ GTM (bottom left) -->
           <g class="node-circle" onclick="scrollToCluster('cluster-4')">
             <circle cx="210" cy="340" r="52" fill="#d19900" opacity="0.15"/>
             <circle cx="210" cy="340" r="44" fill="#d19900" opacity="0.22"/>
             <text x="210" y="333" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="#d19900">④</text>
-            <text x="210" y="347" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#d19900">Go-To-Market &amp;</text>
+            <text x="210" y="347" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#d19900">GTM &amp;</text>
             <text x="210" y="360" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#d19900">Objectives</text>
           </g>
 
@@ -820,7 +732,7 @@ p, li { text-wrap: pretty; }
         <div class="legend-item"><div class="legend-dot" style="background:var(--color-c1)"></div>Market Intelligence</div>
         <div class="legend-item"><div class="legend-dot" style="background:var(--color-c2)"></div>Customer &amp; Value</div>
         <div class="legend-item"><div class="legend-dot" style="background:var(--color-c3)"></div>Strategic Environment</div>
-        <div class="legend-item"><div class="legend-dot" style="background:var(--color-c4)"></div>Go-To-Market &amp; Objectives</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--color-c4)"></div>GTM &amp; Objectives</div>
         <div class="legend-item"><div class="legend-dot" style="background:var(--color-c5)"></div>STP Framework</div>
         <div class="legend-item"><div class="legend-dot" style="background:var(--color-c6)"></div>Strategy &amp; Execution</div>
         <div class="legend-item"><div class="legend-dot" style="background:var(--color-c4)"></div>KPI connectors (gold)</div>
@@ -836,10 +748,6 @@ p, li { text-wrap: pretty; }
 
 <script>
 // ===================== DATA =====================
-
-const saved = localStorage.getItem('theme');
-document.documentElement.setAttribute('data-theme', saved || 'light');
-
 const clusters = [
   {
     id: "cluster-1",
@@ -854,10 +762,10 @@ const clusters = [
       { name: "Market Definition", def: "Specifying the boundaries of the market you compete in — by need, geography, customer type, or occasion. Too narrow cuts opportunity; too broad dilutes focus.", kpi: "TAM/SAM", links: ["Too Narrow Too Broad", "Market Sizing"] },
       { name: "Product or JTBD", def: "Jobs-to-be-Done reframes what a product 'does': customers hire it to accomplish a job. Shifts strategy from features to outcomes.", kpi: "Adoption Rate", links: ["Product Demand", "Market Definition"] },
       { name: "Too Narrow / Too Broad", def: "The scope risk: a market defined too narrowly misses adjacent growth; too broadly, it dilutes resources. Right-sizing is the first strategic decision.", kpi: "Market Scope", links: ["Market Definition", "Market Sizing"] },
-      { name: "Market Sizing", def: "Quantifying TAM (Total Addressable Market), SAM (Serviceable Available Market), and SOM (Serviceable Obtainable Market). Grounds investment cases in reality.", kpi: "TAM · SAM · SOM", links: ["Potential Market", "Available Market", "Target Market"] },
+      { name: "Market Sizing", def: "Quantifying TAM (Total Addressable Market), SAM (Serviceable Available Market), and TOM (Target Obtainable Market). Grounds investment cases in reality.", kpi: "TAM · SAM · TOM", links: ["Potential Market", "Available Market", "Target Market"] },
       { name: "Potential Market", def: "All buyers who could conceivably want the product. The theoretical ceiling of demand.", kpi: "TAM", links: ["Market Sizing", "Available Market"] },
       { name: "Available Market", def: "Subset of the potential market that has interest, income, and access. The realistic addressable pool.", kpi: "SAM", links: ["Potential Market", "Target Market"] },
-      { name: "Target Market", def: "The specific segment the firm chooses to pursue, balancing size, growth, fit, and competition.", kpi: "SOM", links: ["Available Market", "Targeting"] },
+      { name: "Target Market", def: "The specific segment the firm chooses to pursue, balancing size, growth, fit, and competition.", kpi: "TOM", links: ["Available Market", "Targeting"] },
       { name: "Market Forecast", def: "Forward-looking estimate of market size and growth. Combines quantitative models (trend extrapolation) with qualitative signals (expert opinion).", kpi: "CAGR", links: ["Market Demand", "Market Growth"] },
       { name: "Market Demand", def: "Total volume of product bought by a defined customer group in a defined area and period under a given marketing program.", kpi: "Volume · Revenue", links: ["Product Demand", "Market Forecast"] },
       { name: "Product Demand", def: "Demand specific to a firm's product, distinct from category demand. Measured through sales velocity and elasticity.", kpi: "Units Sold · Elasticity", links: ["Market Demand", "Product Penetration"] },
@@ -921,7 +829,7 @@ const clusters = [
     number: "04",
     icon: "🎯",
     tag: "Cluster 4",
-    title: "Go-To-Market & Objectives",
+    title: "GTM & Objectives",
     desc: "Setting measurable goals and building coherent go-to-market plans that translate strategy into action.",
     color: "var(--color-c4)",
     bg: "var(--color-c4-bg)",
@@ -985,6 +893,7 @@ function renderClusters(filterText = "") {
   const container = document.getElementById("clusters-container");
   container.innerHTML = "";
   const query = filterText.toLowerCase().trim();
+  let totalVisible = 0;
 
   clusters.forEach(c => {
     const section = document.createElement("section");
@@ -1001,21 +910,16 @@ function renderClusters(filterText = "") {
       container.appendChild(section);
       return;
     }
-
-    // If searching, auto-open matching clusters
-    if (query && filteredKlos.length > 0) section.classList.add("open");
-
-    const chevronSVG = `<div class="cluster-chevron" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></div>`;
+    totalVisible += filteredKlos.length;
 
     const clusterHeaderHTML = `
-      <div class="cluster-header" onclick="this.closest('.cluster-section').classList.toggle('open')">
+      <div class="cluster-header">
         <div class="cluster-icon" style="background:${c.bg}; color:${c.color}">${c.icon}</div>
         <div class="cluster-meta">
           <div class="cluster-tag" style="color:${c.color}">${c.tag} — ${c.number}</div>
           <h2 class="cluster-title" style="color:var(--color-text)">${c.title}</h2>
           <p class="cluster-desc">${c.desc}</p>
         </div>
-        ${chevronSVG}
       </div>`;
 
     const kloGridItems = (query ? filteredKlos : c.klos).map(k => {
@@ -1034,14 +938,14 @@ function renderClusters(filterText = "") {
           <div class="klo-body">
             <div class="klo-body-inner">
               <p>${k.def}</p>
-              ${k.kpi ? `<!-- KPI_START: ${k.name} --><span class="kpi-badge" style="background:${c.bg};color:${c.color};display:none" data-kpi="${k.kpi}">KPI: ${k.kpi}</span><!-- KPI_END -->` : ""}
+              ${k.kpi ? `<span class="kpi-badge" style="background:${c.bg};color:${c.color}">KPI: ${k.kpi}</span>` : ""}
               ${linksHTML}
             </div>
           </div>
         </div>`;
     }).join("");
 
-    section.innerHTML = clusterHeaderHTML + `<div class="cluster-body"><div class="cluster-body-inner"><div class="klo-grid">${kloGridItems}</div></div></div>`;
+    section.innerHTML = clusterHeaderHTML + `<div class="klo-grid">${kloGridItems}</div>`;
     container.appendChild(section);
   });
 
@@ -1055,11 +959,14 @@ function renderClusters(filterText = "") {
     card.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); }});
   });
 
-  // count hidden — never show total
+  // Update search count
   const countEl = document.getElementById("search-count");
-  if (countEl) countEl.textContent = "";
+  if (query) {
+    countEl.textContent = `${totalVisible} concept${totalVisible !== 1 ? "s" : ""} match "${filterText}"`;
+  } else {
+    countEl.textContent = "";
+  }
 }
-
 
 function highlightText(text, query) {
   const idx = text.toLowerCase().indexOf(query);
@@ -1269,7 +1176,7 @@ const cases = [
   {
     id: "case-telenor",
     number: "05",
-    eyebrow: "Market Opportunity · Go-To-Market · Full STP",
+    eyebrow: "Market Opportunity · GTM · Full STP",
     title: "Telenor Serbia: Reinventing Financial Services",
     dilemma: "Should a telecom operator launch a mobile bank in a low-digital-adoption market — and if so, for whom?",
     color: "var(--color-c4)",
@@ -1303,7 +1210,7 @@ const cases = [
       "Six quantitative segments from GfK. Priority Matrix: Seg 1 (efficiency + status, 12%), Seg 3 (simplicity + cost, 13%), Seg 6 (innovation + speed, 4%) → top priority. Multi-segment strategy with one unifying proposition.",
       "Unified value proposition: 'Efficient, simple, digitally delivered banking with minimal friction — control and convenience without bureaucracy.'",
       "Brand pyramid: 24/7 access → save time / convenience → in control / worry-free → peace of mind about finance. Laddered from concrete attributes to personal values.",
-      "Full Go-To-Market deployment: product roadmap from transactions → savings → credit; pricing from pay-per-transaction to freemium; distribution from single channel to omnichannel; communication via 6M IMCP framework."
+      "Full GTM deployment: product roadmap from transactions → savings → credit; pricing from pay-per-transaction to freemium; distribution from single channel to omnichannel; communication via 6M IMCP framework."
     ],
     lesson: "Low market penetration is not evidence of weak demand — it is often evidence of unsolved barriers: trust, awareness, infrastructure, or complexity. Defining the market opportunity correctly (convert the hesitant majority) determines whether the strategy is growth or share-stealing — and only the former is appropriate for a market entrant."
   },
