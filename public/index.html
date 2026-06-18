@@ -836,6 +836,10 @@ p, li { text-wrap: pretty; }
 
 <script>
 // ===================== DATA =====================
+
+const saved = localStorage.getItem('theme');
+document.documentElement.setAttribute('data-theme', saved || 'light');
+
 const clusters = [
   {
     id: "cluster-1",
